@@ -61,42 +61,210 @@
       ::-webkit-scrollbar-thumb { background: linear-gradient(180deg, #d4af37, #1b5e20); border-radius: 4px; }
     }
 
-    /* ===== PRELOADER ===== */
+    /* ===== ROYAL ENTRANCE VELVET CURTAIN PRELOADER (OPTION B) ===== */
     #preloader {
-      position: fixed; inset: 0; z-index: 10000;
-      background: radial-gradient(ellipse at center, #0d2818 0%, #050e0a 100%);
-      display: flex; flex-direction: column; align-items: center; justify-content: center;
-      transition: opacity 0.8s ease, visibility 0.8s ease;
+      position: fixed;
+      inset: 0;
+      width: 100vw;
+      height: 100vh;
+      height: 100dvh;
+      z-index: 100000;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #020604;
+      pointer-events: auto;
+      transition: visibility 0s 1.45s;
     }
-    #preloader.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
-    .preloader-mosque {
-      width: 100px; height: 100px; position: relative;
-      animation: preloaderPulse 1.5s ease-in-out infinite;
+    #preloader.unveiled {
+      pointer-events: none;
+      visibility: hidden;
     }
-    .preloader-mosque svg { width: 100%; height: 100%; }
-    .preloader-text {
-      font-family: 'Amiri', serif; font-size: 1.3rem; color: #d4af37;
-      margin-top: 18px; animation: fadeInOut 2s ease-in-out infinite;
+    .entrance-curtain {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 50.5vw;
+      height: 100%;
+      z-index: 1;
+      background: linear-gradient(135deg, #071910 0%, #0d2818 50%, #05140b 100%);
+      background-image: repeating-linear-gradient(90deg, rgba(0,0,0,0.35) 0px, transparent 15px, rgba(212,175,55,0.13) 30px, transparent 45px, rgba(0,0,0,0.45) 60px);
+      box-shadow: inset 0 0 60px rgba(0, 0, 0, 0.95);
+      transition: transform 1.35s cubic-bezier(0.77, 0, 0.175, 1);
+      will-change: transform;
     }
-    .preloader-bar {
-      width: 180px; height: 3px; background: rgba(212,175,55,0.2);
-      border-radius: 3px; margin-top: 18px; overflow: hidden;
+    .entrance-curtain.drape-left {
+      left: 0;
+      border-right: 3px solid #d4af37;
     }
-    .preloader-bar-fill {
-      height: 100%; width: 0%; background: linear-gradient(90deg, #d4af37, #ffd700, #d4af37);
-      border-radius: 3px; animation: loadBar 2.5s ease-in-out forwards;
+    .entrance-curtain.drape-right {
+      right: 0;
+      border-left: 3px solid #d4af37;
     }
-    @keyframes preloaderPulse {
-      0%, 100% { transform: scale(1); filter: drop-shadow(0 0 10px rgba(212,175,55,0.3)); }
-      50% { transform: scale(1.05); filter: drop-shadow(0 0 25px rgba(212,175,55,0.6)); }
+    .entrance-curtain::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 18px;
+      background: repeating-linear-gradient(90deg, #d4af37 0px, #ffd700 3px, transparent 3px, transparent 7px);
+      box-shadow: 0 -2px 8px rgba(212, 175, 55, 0.6);
     }
-    @keyframes fadeInOut {
-      0%, 100% { opacity: 0.5; }
-      50% { opacity: 1; }
+    #preloader.unveiled .drape-left {
+      transform: translateX(-102%) skewX(-5deg);
     }
-    @keyframes loadBar {
-      0% { width: 0%; }
-      100% { width: 100%; }
+    #preloader.unveiled .drape-right {
+      transform: translateX(102%) skewX(5deg);
+    }
+
+    /* Center Royal Seal Medallion */
+    .entrance-seal {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 10;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      width: 90%;
+      max-width: 360px;
+      cursor: pointer;
+      user-select: none;
+      -webkit-user-select: none;
+      transition: transform 0.65s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.65s ease;
+    }
+    #preloader.unveiled .entrance-seal {
+      transform: translate(-50%, -50%) scale(1.3);
+      opacity: 0;
+      pointer-events: none;
+    }
+    .seal-pulse-ring {
+      position: absolute;
+      top: 62px;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 130px;
+      height: 130px;
+      border-radius: 50%;
+      border: 2px solid rgba(212, 175, 55, 0.6);
+      animation: sealRingPulse 2.4s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+      pointer-events: none;
+    }
+    .seal-pulse-ring.delay {
+      animation-delay: 1.2s;
+    }
+    @keyframes sealRingPulse {
+      0% { width: 120px; height: 120px; opacity: 0.95; }
+      100% { width: 250px; height: 250px; opacity: 0; }
+    }
+    .seal-medallion {
+      position: relative;
+      background: radial-gradient(circle at 50% 35%, #0e331b 0%, #07190f 70%, #030a06 100%);
+      border: 2px solid #ffd700;
+      border-radius: 50%;
+      width: 124px;
+      height: 124px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 30px rgba(212, 175, 55, 0.55), inset 0 0 18px rgba(255, 215, 0, 0.25);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+    .entrance-seal:hover .seal-medallion,
+    .entrance-seal:active .seal-medallion {
+      transform: scale(1.06);
+      box-shadow: 0 0 45px rgba(255, 215, 0, 0.85), inset 0 0 25px rgba(255, 215, 0, 0.4);
+    }
+    .seal-crescent {
+      font-size: 1.6rem;
+      color: #ffd700;
+      line-height: 1;
+      filter: drop-shadow(0 0 6px rgba(255, 215, 0, 0.9));
+    }
+    .seal-arabic {
+      font-family: 'Amiri', serif;
+      font-size: 0.98rem;
+      color: #ffffff;
+      margin-top: 3px;
+      line-height: 1.1;
+      letter-spacing: 0.5px;
+    }
+    .seal-action {
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.65rem;
+      font-weight: 700;
+      color: #ffd700;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      margin-top: 4px;
+    }
+    .seal-bismillah {
+      font-family: 'Amiri', serif;
+      font-size: 1.15rem;
+      color: #d4af37;
+      margin-top: 20px;
+      margin-bottom: 2px;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.8);
+    }
+    .seal-title {
+      font-family: 'Cinzel', serif;
+      font-size: 1.45rem;
+      font-weight: 700;
+      color: #ffffff;
+      letter-spacing: 1px;
+      margin: 2px 0;
+      text-shadow: 0 2px 12px rgba(0,0,0,0.9);
+    }
+    .seal-sub {
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.76rem;
+      color: #d4af37;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin: 0 0 16px 0;
+      opacity: 0.9;
+    }
+    .seal-tap-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 20px;
+      background: linear-gradient(135deg, rgba(27, 94, 32, 0.92), rgba(13, 40, 24, 0.92));
+      border: 1px solid #ffd700;
+      border-radius: 25px;
+      color: #ffd700;
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      box-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
+      animation: tapBadgePulse 2s ease-in-out infinite alternate;
+    }
+    @keyframes tapBadgePulse {
+      0% { transform: scale(1); box-shadow: 0 0 15px rgba(212, 175, 55, 0.35); }
+      100% { transform: scale(1.04); box-shadow: 0 0 28px rgba(255, 215, 0, 0.75); }
+    }
+    @media (max-width: 480px) {
+      .seal-medallion { width: 112px; height: 112px; }
+      .seal-crescent { font-size: 1.4rem; }
+      .seal-arabic { font-size: 0.9rem; }
+      .seal-action { font-size: 0.6rem; }
+      .seal-pulse-ring { top: 56px; }
+      .seal-bismillah { font-size: 1rem; margin-top: 16px; }
+      .seal-title { font-size: 1.25rem; }
+      .seal-sub { font-size: 0.7rem; margin-bottom: 12px; }
+      .seal-tap-badge { font-size: 0.7rem; padding: 7px 16px; }
+    }
+    @media (max-width: 360px) {
+      .seal-medallion { width: 100px; height: 100px; }
+      .seal-bismillah { font-size: 0.9rem; }
+      .seal-title { font-size: 1.15rem; }
+      .seal-tap-badge { font-size: 0.65rem; padding: 6px 12px; }
     }
 
     /* ===== GLOBAL ANIMATIONS ===== */
@@ -1412,22 +1580,25 @@
 </head>
 <body>
 
-  <!-- ===== PRELOADER ===== -->
-    <!-- ===== PRELOADER ===== -->
-  <div id="preloader">
-    <div class="preloader-mosque">
-      <svg viewBox="0 0 100 100" fill="none">
-        <path d="M50 10 C50 10 30 25 30 40 L30 80 L70 80 L70 40 C70 25 50 10 50 10Z" stroke="#d4af37" stroke-width="1.5" fill="rgba(212,175,55,0.1)"/>
-        <rect x="45" y="60" width="10" height="20" rx="5" fill="rgba(212,175,55,0.3)" stroke="#d4af37" stroke-width="1"/>
-        <circle cx="50" cy="5" r="3" fill="#d4af37"/>
-        <line x1="50" y1="2" x2="50" y2="0" stroke="#d4af37" stroke-width="1"/>
-        <line x1="47" y1="3" x2="45" y2="1" stroke="#d4af37" stroke-width="0.5"/>
-        <line x1="53" y1="3" x2="55" y2="1" stroke="#d4af37" stroke-width="0.5"/>
-        <line x1="30" y1="80" x2="70" y2="80" stroke="#d4af37" stroke-width="1.5"/>
-      </svg>
+  <!-- ===== ROYAL ENTRANCE VELVET CURTAIN PRELOADER (OPTION B) ===== -->
+  <div id="preloader" role="dialog" aria-modal="true" aria-label="Entrance Curtains">
+    <div class="entrance-curtain drape-left"></div>
+    <div class="entrance-curtain drape-right"></div>
+    <div class="entrance-seal" id="entrance-seal-trigger" tabindex="0" role="button" aria-label="Tap to enter with Bismillah">
+      <div class="seal-pulse-ring"></div>
+      <div class="seal-pulse-ring delay"></div>
+      <div class="seal-medallion">
+        <span class="seal-crescent">☪</span>
+        <span class="seal-arabic">مسجد الاکبری</span>
+        <span class="seal-action">Touch to Enter</span>
+      </div>
+      <p class="seal-bismillah">بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ</p>
+      <h2 class="seal-title">Masjid-Al-Akbari</h2>
+      <p class="seal-sub">Grand Opening • Vangoor</p>
+      <div class="seal-tap-badge">
+        <span>✨ Tap to Enter with Bismillah ✨</span>
+      </div>
     </div>
-    <p class="preloader-text">بِسْمِ اللهِ</p>
-    <div class="preloader-bar"><div class="preloader-bar-fill"></div></div>
   </div>
 
   <!-- ===== PARTICLES CANVAS ===== -->
@@ -1896,13 +2067,110 @@
       || window.innerWidth < 769;
     const isLowEnd = navigator.hardwareConcurrency ? navigator.hardwareConcurrency <= 4 : isMobile;
 
-    // ===== PRELOADER =====
-    window.addEventListener('load', () => {
+    // ===== ROYAL ENTRANCE VELVET CURTAIN PRELOADER (OPTION B) =====
+    const entrancePreloader = document.getElementById('preloader');
+    const entranceTrigger = document.getElementById('entrance-seal-trigger');
+    let hasEnteredEntrance = false;
+
+    function playEntranceChime() {
+      try {
+        const AudioCtx = window.AudioContext || window.webkitAudioContext;
+        if (!AudioCtx) return;
+        const ctx = new AudioCtx();
+        if (ctx.state === 'suspended') ctx.resume();
+        const now = ctx.currentTime;
+        // Pentatonic harmonious palace chord: E4, G#4, B4, E5, G#5
+        const freqs = [329.63, 415.30, 493.88, 659.25, 830.61];
+        freqs.forEach((freq, idx) => {
+          const osc = ctx.createOscillator();
+          const gain = ctx.createGain();
+          osc.type = 'sine';
+          const st = now + idx * 0.07;
+          osc.frequency.setValueAtTime(freq, st);
+          gain.gain.setValueAtTime(0.0001, st);
+          gain.gain.exponentialRampToValueAtTime(0.2, st + 0.04);
+          gain.gain.exponentialRampToValueAtTime(0.00001, st + 1.8);
+          osc.connect(gain);
+          gain.connect(ctx.destination);
+          osc.start(st);
+          osc.stop(st + 1.9);
+        });
+      } catch (err) {}
+    }
+
+    function burstEntranceSparkles(cx, cy) {
+      const icons = ['✨', '✦', '🕌', '☪', '🤍', '🌙', '⋆'];
+      for (let i = 0; i < 16; i++) {
+        setTimeout(() => {
+          const el = document.createElement('div');
+          el.className = 'touch-stardust';
+          el.textContent = icons[Math.floor(Math.random() * icons.length)];
+          el.style.left = cx + 'px';
+          el.style.top = cy + 'px';
+          const angle = Math.random() * Math.PI * 2;
+          const dist = 50 + Math.random() * 110;
+          el.style.setProperty('--dx', (Math.cos(angle) * dist) + 'px');
+          el.style.setProperty('--dy', (Math.sin(angle) * dist) + 'px');
+          document.body.appendChild(el);
+          setTimeout(() => el.remove(), 700);
+        }, i * 25);
+      }
+    }
+
+    function unveilEntrance() {
+      if (hasEnteredEntrance || !entrancePreloader) return;
+      hasEnteredEntrance = true;
+
+      // Play celestial chime
+      playEntranceChime();
+
+      // Burst sparkles around seal
+      const rect = entranceTrigger ? entranceTrigger.getBoundingClientRect() : { left: window.innerWidth / 2, top: window.innerHeight / 2, width: 0, height: 0 };
+      burstEntranceSparkles(rect.left + rect.width / 2, rect.top + 60);
+
+      // Part curtains
+      entrancePreloader.classList.add('unveiled');
+
+      // Auto-start Ayat-ul-Kursi audio since user interacted
+      try {
+        const audio = document.getElementById('islamic-audio');
+        const icon = document.getElementById('audio-play-icon');
+        const eq = document.getElementById('audio-equalizer');
+        const st = document.getElementById('audio-track-status');
+        if (audio && audio.paused) {
+          audio.play().then(() => {
+            if (icon) icon.style.display = 'none';
+            if (eq) eq.style.display = 'flex';
+            if (st) st.textContent = 'Playing 🔊';
+          }).catch(() => {});
+        }
+      } catch (e) {}
+
+      // Completely remove preloader from display after curtains have parted
       setTimeout(() => {
-        const p = document.getElementById('preloader');
-        if (p) p.classList.add('hidden');
-      }, isMobile ? 1800 : 2500);
-    });
+        entrancePreloader.style.display = 'none';
+      }, 1500);
+    }
+
+    if (entranceTrigger) {
+      entranceTrigger.addEventListener('click', unveilEntrance);
+      entranceTrigger.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          unveilEntrance();
+        }
+      });
+    }
+    if (entrancePreloader) {
+      entrancePreloader.addEventListener('click', (e) => {
+        unveilEntrance();
+      });
+    }
+
+    // Safety fallback: auto-open after 8 seconds if guest has not tapped
+    setTimeout(() => {
+      if (!hasEnteredEntrance) unveilEntrance();
+    }, 8500);
 
     // ===== MAGICAL GOLDEN TOUCH STARDUST TRAIL =====
     let lastStardustTime = 0;
