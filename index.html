@@ -1273,12 +1273,14 @@
     // ===== WHATSAPP SHARE =====
     document.getElementById('share-btn').addEventListener('click', (e) => {
       e.preventDefault();
-      const text = `🕌 *Grand Opening — Masjid-Al-Akbari*\n\nبِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ\n\nYou are cordially invited to the Grand Opening of *MASJID-AL-AKBARI* (مسجد الاکبری)\n\n📅 *Date:* Sunday, 15 November 2026\n🕐 *Time:* 1:30 PM\n📍 *Venue:* Vangoor\n🍽️ *Lunch:* Served after Zuhr Salah\n\n_A Place of Worship, Guidance and Unity_\n\nMay Allah accept our efforts and make this mosque a source of Hidayah, unity and blessings for everyone. Ameen. 🤲`;
+      const siteUrl = 'https://ameer2402.github.io/masjid-invite/';
+      const text = `🕌 *Grand Opening — Masjid-Al-Akbari*\n\nبِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ\n\nYou are cordially invited to the Grand Opening of *MASJID-AL-AKBARI* (مسجد الاکبری)\n\n📅 *Date:* Sunday, 15 November 2026\n🕐 *Time:* 1:30 PM\n📍 *Venue:* Vangoor\n🍽️ *Lunch:* Served after Zuhr Salah\n\n_A Place of Worship, Guidance and Unity_\n\n👉 View Invitation: ${siteUrl}\n\nMay Allah accept our efforts and make this mosque a source of Hidayah, unity and blessings for everyone. Ameen. 🤲`;
 
       if (navigator.share) {
         navigator.share({
           title: 'Grand Opening — Masjid-Al-Akbari',
           text: text,
+          url: siteUrl,
         }).catch(() => {});
       } else {
         window.open('https://wa.me/?text=' + encodeURIComponent(text), '_blank');
