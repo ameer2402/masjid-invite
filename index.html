@@ -444,31 +444,179 @@
 
     /* ===== MOSQUE IMAGE SECTION ===== */
     .mosque-image-section {
-      background: linear-gradient(180deg, #0a1a0f, #0d2818, #0a1a0f);
+      background: linear-gradient(180deg, #0a1a0f 0%, #0d2818 50%, #0a1a0f 100%);
       text-align: center; position: relative; overflow: hidden;
+      padding: 60px 20px;
     }
+    .mosque-section-subtitle {
+      color: rgba(255, 255, 255, 0.8);
+      font-size: clamp(0.9rem, 2.5vw, 1.05rem);
+      margin-top: -15px; margin-bottom: 25px;
+      font-style: italic;
+    }
+    .mosque-image-frame {
+      position: relative; display: block; margin: 20px auto 0;
+      max-width: 740px; cursor: pointer;
+      border-radius: 22px;
+      padding: 8px;
+      background: linear-gradient(145deg, rgba(212, 175, 55, 0.4), rgba(13, 40, 24, 0.9), rgba(212, 175, 55, 0.25));
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.7), 0 0 35px rgba(212, 175, 55, 0.2);
+      transition: transform 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.35s ease;
+    }
+    .mosque-image-frame:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 25px 70px rgba(0, 0, 0, 0.8), 0 0 45px rgba(255, 215, 0, 0.35);
+    }
+    .mosque-top-ribbon {
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      padding: 6px 18px; margin-bottom: 8px;
+      background: linear-gradient(135deg, rgba(13, 40, 24, 0.95), rgba(5, 14, 10, 0.95));
+      border: 1px solid rgba(212, 175, 55, 0.6);
+      border-radius: 20px;
+      color: #ffd700; font-size: 0.78rem; font-weight: 600;
+      letter-spacing: 0.5px;
+      box-shadow: 0 3px 12px rgba(0,0,0,0.4);
+    }
+    .ribbon-icon { color: #d4af37; font-size: 0.85rem; }
     .mosque-image-wrapper {
-      position: relative; display: block; margin: 30px auto 0;
+      position: relative; display: block;
       border-radius: 16px; overflow: hidden;
-      box-shadow: 0 15px 50px rgba(0,0,0,0.5), 0 0 30px rgba(212,175,55,0.1);
-      animation: borderGlow 4s ease-in-out infinite;
-      border: 2px solid rgba(212,175,55,0.3);
-      max-width: 700px;
+      background: #000;
     }
     .mosque-image-wrapper img {
       display: block; width: 100%; height: auto;
-      transition: transform 0.5s ease;
+      transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    .mosque-image-frame:hover .mosque-image-wrapper img {
+      transform: scale(1.03);
     }
     .mosque-image-overlay {
       position: absolute; inset: 0;
-      background: linear-gradient(180deg, transparent 50%, rgba(10,26,15,0.8) 100%);
+      background: linear-gradient(180deg, transparent 55%, rgba(5, 14, 10, 0.85) 100%);
       pointer-events: none;
     }
-    .image-caption {
-      position: absolute; bottom: 15px; left: 50%; transform: translateX(-50%);
-      font-family: 'Great Vibes', cursive; font-size: clamp(1rem, 3.5vw, 1.4rem); color: #d4af37;
-      text-shadow: 0 2px 10px rgba(0,0,0,0.8);
-      white-space: nowrap;
+    .zoom-pill-hint {
+      position: absolute; top: 12px; right: 12px;
+      background: rgba(10, 26, 15, 0.78);
+      border: 1px solid rgba(212, 175, 55, 0.5);
+      color: #ffd700;
+      font-size: 0.72rem; font-weight: 500;
+      padding: 5px 11px; border-radius: 20px;
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      display: flex; align-items: center; gap: 5px;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+    .image-caption-box {
+      position: absolute; bottom: 12px; left: 50%; transform: translateX(-50%);
+      width: calc(100% - 30px); max-width: 500px;
+      display: flex; flex-direction: column; align-items: center; gap: 2px;
+      background: rgba(5, 14, 10, 0.65);
+      border: 1px solid rgba(212, 175, 55, 0.3);
+      border-radius: 12px; padding: 6px 14px;
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      pointer-events: none;
+    }
+    .image-caption-box .arabic-caption {
+      font-family: 'Amiri', 'Traditional Arabic', serif;
+      font-size: clamp(1.1rem, 3.5vw, 1.4rem);
+      color: #ffd700; line-height: 1.2;
+    }
+    .image-caption-box .english-caption {
+      font-family: 'Poppins', sans-serif;
+      font-size: clamp(0.75rem, 2.2vw, 0.88rem);
+      color: rgba(255, 255, 255, 0.95);
+      font-weight: 500;
+    }
+
+    /* Masjid Highlights Cards */
+    .masjid-highlights-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 14px;
+      max-width: 740px;
+      margin: 22px auto 0;
+      text-align: left;
+    }
+    .masjid-highlight-item {
+      background: rgba(13, 40, 24, 0.55);
+      border: 1px solid rgba(212, 175, 55, 0.25);
+      border-radius: 14px;
+      padding: 14px 16px;
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      transition: transform 0.3s ease, border-color 0.3s ease;
+    }
+    .masjid-highlight-item:hover {
+      transform: translateY(-2px);
+      border-color: rgba(212, 175, 55, 0.6);
+    }
+    .masjid-highlight-item .highlight-icon {
+      font-size: 1.4rem; display: block; margin-bottom: 6px;
+    }
+    .masjid-highlight-item h4 {
+      font-family: 'Cinzel', 'Poppins', serif;
+      font-size: 0.9rem; color: #ffd700; font-weight: 600;
+      margin-bottom: 4px;
+    }
+    .masjid-highlight-item p {
+      font-size: 0.78rem; color: rgba(255, 255, 255, 0.78);
+      line-height: 1.4; margin: 0;
+    }
+
+    /* Photo Lightbox Modal */
+    .lightbox-modal {
+      position: fixed; inset: 0; z-index: 10000;
+      display: flex; align-items: center; justify-content: center;
+      opacity: 0; pointer-events: none;
+      transition: opacity 0.3s ease;
+      padding: 16px;
+    }
+    .lightbox-modal.open {
+      opacity: 1; pointer-events: auto;
+    }
+    .lightbox-backdrop {
+      position: absolute; inset: 0;
+      background: rgba(5, 14, 10, 0.92);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+    }
+    .lightbox-content {
+      position: relative; z-index: 2;
+      max-width: 94vw; max-height: 90vh;
+      display: flex; flex-direction: column; align-items: center;
+      background: rgba(13, 40, 24, 0.9);
+      border: 1px solid rgba(212, 175, 55, 0.45);
+      border-radius: 18px;
+      padding: 12px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.9);
+    }
+    .lightbox-close-btn {
+      position: absolute; top: -14px; right: -14px;
+      width: 36px; height: 36px; border-radius: 50%;
+      background: linear-gradient(135deg, #d4af37, #ffd700);
+      color: #0a1a0f; border: none; font-size: 1.1rem;
+      font-weight: bold; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+      -webkit-tap-highlight-color: transparent;
+    }
+    .lightbox-full-img {
+      max-width: 100%; max-height: calc(85vh - 70px);
+      border-radius: 12px; object-fit: contain;
+      display: block;
+    }
+    .lightbox-caption {
+      text-align: center; margin-top: 10px;
+    }
+    .lightbox-caption h3 {
+      font-size: 0.95rem; color: #ffd700; margin: 0;
+      font-family: 'Poppins', sans-serif;
+    }
+    .lightbox-caption p {
+      font-size: 0.76rem; color: rgba(255, 255, 255, 0.75); margin: 3px 0 0;
     }
 
     /* ===== LUNCH SECTION ===== */
@@ -642,7 +790,7 @@
       100% { opacity: 0; transform: translate(var(--dx2), -150px) scale(0.9) rotate(var(--rot2)); }
     }
 
-    /* ===== FLOATING ISLAMIC AUDIO PLAYER ===== */
+    /* ===== FLOATING ISLAMIC AUDIO PLAYER (AYAT AL-KURSI) ===== */
     .floating-audio-widget {
       position: fixed;
       bottom: calc(20px + env(safe-area-inset-bottom));
@@ -650,65 +798,46 @@
       z-index: 1000;
       max-width: calc(100vw - 32px);
     }
-    .audio-player-card {
-      background: linear-gradient(145deg, rgba(13, 40, 24, 0.95), rgba(5, 14, 10, 0.98));
-      border: 1px solid rgba(212, 175, 55, 0.45);
-      border-radius: 18px;
-      padding: 9px 13px;
-      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6), 0 0 15px rgba(212, 175, 55, 0.2);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      display: flex;
-      flex-direction: column;
-      gap: 7px;
-      transition: all 0.3s ease;
-    }
-    .audio-player-header {
-      display: flex;
+    .audio-pill-btn {
+      display: inline-flex;
       align-items: center;
-      gap: 10px;
+      gap: 11px;
+      padding: 8px 16px 8px 9px;
+      border-radius: 50px;
+      background: linear-gradient(145deg, rgba(13, 40, 24, 0.96), rgba(5, 14, 10, 0.98));
+      border: 1px solid rgba(212, 175, 55, 0.5);
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.65), 0 0 18px rgba(212, 175, 55, 0.25);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      -webkit-tap-highlight-color: transparent;
+      text-align: left;
+    }
+    .audio-pill-btn:hover {
+      transform: translateY(-2px);
+      border-color: #ffd700;
+      box-shadow: 0 10px 35px rgba(212, 175, 55, 0.4);
+    }
+    .audio-pill-btn:active {
+      transform: scale(0.96);
     }
     .audio-play-circle {
-      width: 38px;
-      height: 38px;
+      width: 36px;
+      height: 36px;
       border-radius: 50%;
       background: linear-gradient(135deg, #d4af37, #ffd700);
       color: #0a1a0f;
-      border: none;
       display: flex;
       align-items: center;
       justify-content: center;
-      cursor: pointer;
-      box-shadow: 0 3px 12px rgba(212, 175, 55, 0.4);
-      transition: all 0.25s ease;
-      -webkit-tap-highlight-color: transparent;
+      box-shadow: 0 3px 10px rgba(212, 175, 55, 0.4);
       flex-shrink: 0;
-    }
-    .audio-play-circle:active {
-      transform: scale(0.92);
     }
     .audio-play-icon {
       font-size: 0.9rem;
       margin-left: 2px;
       font-weight: bold;
-    }
-    .audio-track-info {
-      display: flex;
-      flex-direction: column;
-      min-width: 135px;
-      text-align: left;
-    }
-    .audio-track-title {
-      font-family: 'Poppins', sans-serif;
-      font-size: 0.8rem;
-      font-weight: 600;
-      color: #fff;
-      line-height: 1.2;
-    }
-    .audio-track-status {
-      font-size: 0.68rem;
-      color: #d4af37;
-      margin-top: 2px;
     }
     .audio-equalizer {
       display: flex;
@@ -729,38 +858,35 @@
       0% { height: 3px; }
       100% { height: 14px; }
     }
-    .audio-track-selector {
+    .audio-pill-text {
       display: flex;
-      gap: 6px;
-      border-top: 1px solid rgba(212, 175, 55, 0.2);
-      padding-top: 6px;
+      flex-direction: column;
+      line-height: 1.25;
     }
-    .track-tab {
-      flex: 1;
-      padding: 5px 8px;
-      font-size: 0.7rem;
+    .audio-track-title {
       font-family: 'Poppins', sans-serif;
-      border-radius: 10px;
-      border: 1px solid rgba(212, 175, 55, 0.3);
-      background: rgba(255, 255, 255, 0.05);
-      color: rgba(255, 255, 255, 0.75);
-      cursor: pointer;
-      transition: all 0.2s ease;
-      -webkit-tap-highlight-color: transparent;
-      white-space: nowrap;
-      text-align: center;
-    }
-    .track-tab.active {
-      background: linear-gradient(135deg, rgba(27, 94, 32, 0.9), rgba(46, 125, 50, 0.9));
-      color: #ffd700;
-      border-color: #ffd700;
+      font-size: 0.82rem;
       font-weight: 600;
-      box-shadow: 0 0 10px rgba(212, 175, 55, 0.25);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .audio-track-title small {
+      font-family: 'Amiri', serif;
+      color: #ffd700;
+      font-size: 0.88rem;
+    }
+    .audio-track-status {
+      font-size: 0.68rem;
+      color: #d4af37;
+      margin-top: 1px;
     }
     @media (max-width: 360px) {
       .floating-audio-widget { right: 10px; bottom: calc(14px + env(safe-area-inset-bottom)); }
-      .audio-player-card { padding: 8px 10px; }
-      .track-tab { font-size: 0.65rem; padding: 4px 6px; }
+      .audio-pill-btn { padding: 6px 12px 6px 7px; gap: 8px; }
+      .audio-play-circle { width: 32px; height: 32px; }
+      .audio-track-title { font-size: 0.75rem; }
     }
 
     /* ===== SHARE BUTTONS ===== */
@@ -1169,22 +1295,73 @@
   <section class="mosque-image-section" id="mosque">
     <div class="section-container">
       <div class="reveal">
-        <h2 class="section-title"><span>Our Beautiful Masjid</span></h2>
+        <div class="section-badge">✨ ALHAMDULILLAH ✨</div>
+        <h2 class="section-title"><span>Masjid-Al-Akbari</span></h2>
         <div class="divider">
           <div class="divider-line"></div>
           <span class="divider-star">🕌</span>
           <div class="divider-line"></div>
         </div>
+        <p class="mosque-section-subtitle">A blessed sanctuary of faith, unity & remembrance in Vangoor</p>
       </div>
+
       <div class="reveal-scale" style="transition-delay: 0.2s;">
-        <div class="mosque-image-wrapper">
-          <img src="mosque.jpg" alt="Masjid-Al-Akbari" loading="lazy" />
-          <div class="mosque-image-overlay"></div>
-          <p class="image-caption">Masjid-Al-Akbari — مسجد الاکبری</p>
+        <div class="mosque-image-frame" id="mosque-image-frame" role="button" tabindex="0" aria-label="Tap to view full mosque photo">
+          <div class="mosque-top-ribbon">
+            <span class="ribbon-icon">✦</span>
+            <span>Grand Opening • Sunday, 15 Nov 2026</span>
+            <span class="ribbon-icon">✦</span>
+          </div>
+
+          <div class="mosque-image-wrapper">
+            <img src="mosque.jpg" alt="Masjid-Al-Akbari (مسجد الاکبری) Vangoor" id="main-mosque-img" />
+            <div class="mosque-image-overlay"></div>
+            
+            <div class="zoom-pill-hint">
+              <span>🔍 Tap to view full size</span>
+            </div>
+
+            <div class="image-caption-box">
+              <span class="arabic-caption">مسجد الاکبری</span>
+              <span class="english-caption">Masjid-Al-Akbari — Vangoor</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3 Architectural Highlights Badges -->
+        <div class="masjid-highlights-grid">
+          <div class="masjid-highlight-item">
+            <span class="highlight-icon">🕌</span>
+            <h4>Spacious Prayer Hall</h4>
+            <p>Peaceful sanctuary for the 5 daily prayers and Friday Jummah</p>
+          </div>
+          <div class="masjid-highlight-item">
+            <span class="highlight-icon">🌅</span>
+            <h4>Sunset Serenity</h4>
+            <p>Beautiful ambiance filled with tranquility and barakah</p>
+          </div>
+          <div class="masjid-highlight-item">
+            <span class="highlight-icon">🤝</span>
+            <h4>Welcoming Community</h4>
+            <p>Gathering all believers with warmth, unity, and shared love</p>
+          </div>
         </div>
       </div>
     </div>
   </section>
+
+  <!-- ===== PHOTO LIGHTBOX MODAL ===== -->
+  <div class="lightbox-modal" id="photo-lightbox" aria-hidden="true" role="dialog" aria-label="Mosque Photo Fullscreen">
+    <div class="lightbox-backdrop" id="lightbox-backdrop"></div>
+    <div class="lightbox-content">
+      <button class="lightbox-close-btn" id="lightbox-close" type="button" aria-label="Close photo view">✕</button>
+      <img src="mosque.jpg" alt="Masjid-Al-Akbari Full View" class="lightbox-full-img" />
+      <div class="lightbox-caption">
+        <h3>مسجد الاکبری — Masjid-Al-Akbari</h3>
+        <p>Vangoor · Grand Opening on Sunday, 15 November 2026</p>
+      </div>
+    </div>
+  </div>
 
   <!-- ===== LUNCH ===== -->
   <section class="lunch-section" id="lunch">
@@ -1289,29 +1466,24 @@
   <div class="copy-toast" id="copy-toast">✓ Link copied to clipboard!</div>
 
   <!-- ===== FLOATING ISLAMIC AUDIO PLAYER ===== -->
-  <div class="floating-audio-widget" id="audio-widget" aria-label="Islamic Audio Player">
-    <div class="audio-player-card">
-      <div class="audio-player-header">
-        <button class="audio-play-circle" id="audio-play-btn" type="button" aria-label="Play or Pause Audio">
-          <span class="audio-play-icon" id="audio-play-icon">▶</span>
-          <div class="audio-equalizer" id="audio-equalizer" style="display:none;">
-            <div class="audio-bar"></div>
-            <div class="audio-bar"></div>
-            <div class="audio-bar"></div>
-          </div>
-        </button>
-        <div class="audio-track-info">
-          <span class="audio-track-title" id="audio-track-title">Ayat al-Kursi</span>
-          <span class="audio-track-status" id="audio-track-status">Tap to Listen</span>
+    <!-- ===== FLOATING ISLAMIC AUDIO (AYAT AL-KURSI) ===== -->
+  <div class="floating-audio-widget" id="audio-widget" aria-label="Ayat al-Kursi Player">
+    <button class="audio-pill-btn" id="audio-play-btn" type="button" aria-label="Play or Pause Ayat al-Kursi">
+      <div class="audio-play-circle">
+        <span class="audio-play-icon" id="audio-play-icon">▶</span>
+        <div class="audio-equalizer" id="audio-equalizer" style="display:none;">
+          <div class="audio-bar"></div>
+          <div class="audio-bar"></div>
+          <div class="audio-bar"></div>
         </div>
       </div>
-      <div class="audio-track-selector">
-        <button class="track-tab active" id="tab-kursi" type="button">Ayat al-Kursi</button>
-        <button class="track-tab" id="tab-nasheed" type="button">Hasbi Rabbi</button>
+      <div class="audio-pill-text">
+        <span class="audio-track-title">Ayat al-Kursi <small>آية الكرسي</small></span>
+        <span class="audio-track-status" id="audio-track-status">Tap to Listen 🔊</span>
       </div>
-    </div>
+    </button>
   </div>
-  <audio id="islamic-audio" preload="metadata"></audio>
+  <audio id="islamic-audio" src="audio-ayatulkursi.mp3" preload="metadata"></audio>
 
   <!-- ===== FOOTER ===== -->
   <footer>
@@ -1564,114 +1736,167 @@
       n.style.transition = 'transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
     });
 
-    // ===== ISLAMIC AUDIO PLAYER (Option 2: Ayat al-Kursi & Option 3: Hasbi Rabbi) =====
+    // ===== MOSQUE PHOTO LIGHTBOX (TAP TO ZOOM) =====
+    const mosqueTrigger = document.getElementById('mosque-image-frame');
+    const lightbox = document.getElementById('photo-lightbox');
+    const lightboxClose = document.getElementById('lightbox-close');
+    const lightboxBackdrop = document.getElementById('lightbox-backdrop');
+
+    function openLightbox() {
+      if (!lightbox) return;
+      lightbox.classList.add('open');
+      lightbox.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+      if (!lightbox) return;
+      lightbox.classList.remove('open');
+      lightbox.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    }
+
+    if (mosqueTrigger) {
+      mosqueTrigger.addEventListener('click', openLightbox);
+      mosqueTrigger.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          openLightbox();
+        }
+      });
+    }
+    if (lightboxClose) lightboxClose.addEventListener('click', closeLightbox);
+    if (lightboxBackdrop) lightboxBackdrop.addEventListener('click', closeLightbox);
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && lightbox && lightbox.classList.contains('open')) {
+        closeLightbox();
+      }
+    });
+
+    // ===== FLOATING ISLAMIC AUDIO PLAYER (AYAT AL-KURSI) =====
     const audioEl = document.getElementById('islamic-audio');
     const audioPlayBtn = document.getElementById('audio-play-btn');
     const audioPlayIcon = document.getElementById('audio-play-icon');
     const audioEqualizer = document.getElementById('audio-equalizer');
-    const audioTrackTitle = document.getElementById('audio-track-title');
     const audioTrackStatus = document.getElementById('audio-track-status');
-    const tabKursi = document.getElementById('tab-kursi');
-    const tabNasheed = document.getElementById('tab-nasheed');
 
-    const tracks = {
-      kursi: {
-        title: 'Ayat al-Kursi',
-        src: 'audio-ayatulkursi.mp3'
-      },
-      nasheed: {
-        title: 'Hasbi Rabbi (Nasheed)',
-        src: 'audio-nasheed.mp3'
-      }
-    };
-
-    let currentTrackKey = 'kursi';
-    audioEl.src = tracks.kursi.src;
-
-    function playTrack() {
+    function playAyatAlKursi() {
       audioEl.play().then(() => {
-        audioPlayIcon.style.display = 'none';
-        audioEqualizer.style.display = 'flex';
-        audioTrackStatus.textContent = 'Playing 🔊';
+        if (audioPlayIcon) audioPlayIcon.style.display = 'none';
+        if (audioEqualizer) audioEqualizer.style.display = 'flex';
+        if (audioTrackStatus) audioTrackStatus.textContent = 'Playing 🔊';
       }).catch(err => {
-        audioTrackStatus.textContent = 'Tap to Listen';
+        if (audioTrackStatus) audioTrackStatus.textContent = 'Tap to Listen 🔊';
       });
     }
 
-    function pauseTrack() {
+    function pauseAyatAlKursi() {
       audioEl.pause();
-      audioPlayIcon.style.display = 'block';
-      audioEqualizer.style.display = 'none';
-      audioTrackStatus.textContent = 'Paused ⏸';
+      if (audioPlayIcon) audioPlayIcon.style.display = 'block';
+      if (audioEqualizer) audioEqualizer.style.display = 'none';
+      if (audioTrackStatus) audioTrackStatus.textContent = 'Paused ⏸';
     }
 
-    audioPlayBtn.addEventListener('click', () => {
-      if (audioEl.paused) {
-        playTrack();
-      } else {
-        pauseTrack();
-      }
-    });
+    if (audioPlayBtn) {
+      audioPlayBtn.addEventListener('click', () => {
+        if (audioEl.paused) {
+          playAyatAlKursi();
+        } else {
+          pauseAyatAlKursi();
+        }
+      });
+    }
 
-    audioEl.addEventListener('ended', () => {
-      pauseTrack();
-      audioTrackStatus.textContent = 'Completed ✓';
-    });
+    if (audioEl) {
+      audioEl.addEventListener('ended', () => {
+        pauseAyatAlKursi();
+        if (audioTrackStatus) audioTrackStatus.textContent = 'Completed ✓';
+      });
+    }
 
-    tabKursi.addEventListener('click', () => {
-      if (currentTrackKey === 'kursi' && !audioEl.paused) return;
-      currentTrackKey = 'kursi';
-      tabKursi.classList.add('active');
-      tabNasheed.classList.remove('active');
-      audioTrackTitle.textContent = tracks.kursi.title;
-      audioEl.src = tracks.kursi.src;
-      playTrack();
-    });
+    // ===== SACRED ISLAMIC BLESSING SOUND & AMEEN SPEECH =====
+    function playAmeenBlessingSound() {
+      try {
+        const AudioContext = window.AudioContext || window.webkitAudioContext;
+        if (!AudioContext) return;
+        const ctx = new AudioContext();
+        if (ctx.state === 'suspended') ctx.resume();
 
-    tabNasheed.addEventListener('click', () => {
-      if (currentTrackKey === 'nasheed' && !audioEl.paused) return;
-      currentTrackKey = 'nasheed';
-      tabNasheed.classList.add('active');
-      tabKursi.classList.remove('active');
-      audioTrackTitle.textContent = tracks.nasheed.title;
-      audioEl.src = tracks.nasheed.src;
-      playTrack();
-    });
+        // 4 warm sacred harmonic notes: C5 (523.25Hz), E5 (659.25Hz), G5 (783.99Hz), C6 (1046.50Hz)
+        const notes = [523.25, 659.25, 783.99, 1046.50];
+        notes.forEach((freq, idx) => {
+          const osc = ctx.createOscillator();
+          const gain = ctx.createGain();
+          osc.type = 'sine';
+          osc.frequency.setValueAtTime(freq, ctx.currentTime);
+
+          const startTime = ctx.currentTime + (idx * 0.09);
+          gain.gain.setValueAtTime(0.0001, startTime);
+          gain.gain.exponentialRampToValueAtTime(0.12 / notes.length, startTime + 0.05);
+          gain.gain.exponentialRampToValueAtTime(0.00001, startTime + 2.0);
+
+          osc.connect(gain);
+          gain.connect(ctx.destination);
+          osc.start(startTime);
+          osc.stop(startTime + 2.1);
+        });
+      } catch (e) {}
+    }
+
+    function speakAmeenArabic() {
+      try {
+        if ('speechSynthesis' in window) {
+          window.speechSynthesis.cancel();
+          const u = new SpeechSynthesisUtterance('آمِينَ يَا رَبَّ العَالَمِينَ');
+          u.lang = 'ar-SA';
+          u.rate = 0.82;
+          u.pitch = 0.95;
+          u.volume = 1.0;
+          window.speechSynthesis.speak(u);
+        }
+      } catch (e) {}
+    }
 
     // ===== SAY AMEEN INTERACTION =====
     const ameenBtn = document.getElementById('ameen-btn');
     const ameenBtnText = document.getElementById('ameen-btn-text');
 
-    ameenBtn.addEventListener('click', () => {
-      ameenBtn.classList.add('clicked');
-      ameenBtnText.textContent = '✓ Ameen Ya Rabbal \'Alameen 💚';
+    if (ameenBtn) {
+      ameenBtn.addEventListener('click', () => {
+        ameenBtn.classList.add('clicked');
+        ameenBtnText.textContent = '✓ Ameen Ya Rabbal \'Alameen 💚';
 
-      const rect = ameenBtn.getBoundingClientRect();
-      const originX = rect.left + rect.width / 2;
-      const originY = rect.top;
-      const icons = ['☪', '🤲', '✨', '🤍', '🌙', '✦'];
+        // Play sacred chime and speak Arabic Ameen Ya Rabbal Alameen!
+        playAmeenBlessingSound();
+        speakAmeenArabic();
 
-      for (let i = 0; i < 8; i++) {
-        setTimeout(() => {
-          const el = document.createElement('div');
-          el.className = 'floating-sparkle-blessing';
-          el.textContent = icons[Math.floor(Math.random() * icons.length)];
-          const dx = (Math.random() - 0.5) * 120 + 'px';
-          const dx2 = (Math.random() - 0.5) * 160 + 'px';
-          const rot = (Math.random() - 0.5) * 45 + 'deg';
-          const rot2 = (Math.random() - 0.5) * 90 + 'deg';
-          el.style.setProperty('--dx', dx);
-          el.style.setProperty('--dx2', dx2);
-          el.style.setProperty('--rot', rot);
-          el.style.setProperty('--rot2', rot2);
-          el.style.left = (originX + (Math.random() - 0.5) * 40) + 'px';
-          el.style.top = originY + 'px';
-          el.style.color = '#ffd700';
-          document.body.appendChild(el);
-          setTimeout(() => el.remove(), 1800);
-        }, i * 75);
-      }
-    });
+        const rect = ameenBtn.getBoundingClientRect();
+        const originX = rect.left + rect.width / 2;
+        const originY = rect.top;
+        const icons = ['☪', '🤲', '✨', '🤍', '🌙', '✦'];
+
+        for (let i = 0; i < 8; i++) {
+          setTimeout(() => {
+            const el = document.createElement('div');
+            el.className = 'floating-sparkle-blessing';
+            el.textContent = icons[Math.floor(Math.random() * icons.length)];
+            const dx = (Math.random() - 0.5) * 120 + 'px';
+            const dx2 = (Math.random() - 0.5) * 160 + 'px';
+            const rot = (Math.random() - 0.5) * 45 + 'deg';
+            const rot2 = (Math.random() - 0.5) * 90 + 'deg';
+            el.style.setProperty('--dx', dx);
+            el.style.setProperty('--dx2', dx2);
+            el.style.setProperty('--rot', rot);
+            el.style.setProperty('--rot2', rot2);
+            el.style.left = (originX + (Math.random() - 0.5) * 40) + 'px';
+            el.style.top = originY + 'px';
+            el.style.color = '#ffd700';
+            document.body.appendChild(el);
+            setTimeout(() => el.remove(), 1800);
+          }, i * 75);
+        }
+      });
+    }
   </script>
 </body>
 </html>
