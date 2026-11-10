@@ -478,6 +478,172 @@
       box-shadow: 0 3px 12px rgba(0,0,0,0.4);
     }
     .ribbon-icon { color: #d4af37; font-size: 0.85rem; }
+
+    /* ===== MOSQUE INTERACTIVE VELVET CURTAINS ===== */
+    .mosque-curtain-stage {
+      position: relative;
+      overflow: hidden;
+      border-radius: 16px;
+      background: #000;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+      width: 100%;
+    }
+    .mosque-curtain-overlay {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 10;
+      display: flex;
+      cursor: pointer;
+      pointer-events: auto;
+      transition: opacity 0.5s ease;
+    }
+    .mosque-curtain-drape {
+      width: 50.5%;
+      height: 100%;
+      position: relative;
+      background: linear-gradient(135deg, #071910 0%, #0d2818 50%, #05140b 100%);
+      background-image: repeating-linear-gradient(90deg, rgba(0,0,0,0.35) 0px, transparent 15px, rgba(212,175,55,0.15) 30px, transparent 45px, rgba(0,0,0,0.45) 60px);
+      box-shadow: inset 0 0 40px rgba(0, 0, 0, 0.85);
+      transition: transform 1.25s cubic-bezier(0.77, 0, 0.175, 1);
+    }
+    .drape-left {
+      border-right: 3px solid #d4af37;
+      box-shadow: inset -5px 0 20px rgba(0,0,0,0.8), inset 0 0 15px rgba(212,175,55,0.3);
+      transform-origin: left center;
+    }
+    .drape-right {
+      border-left: 3px solid #d4af37;
+      box-shadow: inset 5px 0 20px rgba(0,0,0,0.8), inset 0 0 15px rgba(212,175,55,0.3);
+      transform-origin: right center;
+    }
+    .drape-tassel-fringe {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 14px;
+      background: repeating-linear-gradient(90deg, #d4af37 0px, #ffd700 3px, transparent 3px, transparent 7px);
+      box-shadow: 0 -2px 6px rgba(212, 175, 55, 0.5);
+    }
+
+    /* Royal Medallion Unveil Button */
+    .curtain-unveil-trigger {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 12;
+      background: none;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      -webkit-tap-highlight-color: transparent;
+      padding: 0;
+      pointer-events: auto;
+      transition: transform 0.8s ease, opacity 0.6s ease;
+    }
+    .unveil-pulse-ring {
+      position: absolute;
+      inset: -14px;
+      border-radius: 50%;
+      border: 2px solid rgba(255, 215, 0, 0.65);
+      animation: pulseRing 2s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+    }
+    .unveil-pulse-ring.delay {
+      animation-delay: 0.8s;
+    }
+    @keyframes pulseRing {
+      0% { transform: scale(0.85); opacity: 0.95; }
+      100% { transform: scale(1.35); opacity: 0; }
+    }
+    .unveil-medallion {
+      width: 135px;
+      height: 135px;
+      border-radius: 50%;
+      background: radial-gradient(circle, #1b5e20 0%, #0a2614 70%, #05140b 100%);
+      border: 3px solid #ffd700;
+      box-shadow: 0 0 35px rgba(212, 175, 55, 0.7), inset 0 0 20px rgba(255, 215, 0, 0.35);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 10px;
+      text-align: center;
+      animation: medallionGlow 3s ease-in-out infinite alternate;
+    }
+    @keyframes medallionGlow {
+      0% { transform: scale(1); box-shadow: 0 0 25px rgba(212,175,55,0.45); }
+      100% { transform: scale(1.05); box-shadow: 0 0 45px rgba(255,215,0,0.85); }
+    }
+    .unveil-crescent { font-size: 1.6rem; color: #ffd700; line-height: 1; }
+    .unveil-arabic {
+      font-family: 'Amiri', serif; font-size: 1rem; color: #ffd700;
+      margin-top: 2px; line-height: 1.1;
+    }
+    .unveil-text {
+      font-family: 'Poppins', sans-serif; font-size: 0.72rem; font-weight: 700;
+      color: #fff; text-transform: uppercase; letter-spacing: 0.5px;
+      margin-top: 3px;
+    }
+    .unveil-sub {
+      font-size: 0.6rem; color: rgba(255, 255, 255, 0.75);
+    }
+
+    /* Unveiled Curtains State */
+    .mosque-curtain-stage.unveiled .drape-left {
+      transform: translateX(-102%) skewX(-5deg);
+    }
+    .mosque-curtain-stage.unveiled .drape-right {
+      transform: translateX(102%) skewX(5deg);
+    }
+    .mosque-curtain-stage.unveiled .curtain-unveil-trigger {
+      transform: translate(-50%, -50%) scale(1.4);
+      opacity: 0; pointer-events: none;
+    }
+    .mosque-curtain-stage.unveiled .mosque-curtain-overlay {
+      pointer-events: none;
+    }
+
+    /* Rewind button */
+    .curtain-rewind-btn {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      z-index: 15;
+      background: rgba(10, 26, 15, 0.88);
+      border: 1px solid rgba(212, 175, 55, 0.55);
+      color: #ffd700;
+      font-size: 0.72rem;
+      font-weight: 600;
+      padding: 5px 12px;
+      border-radius: 20px;
+      cursor: pointer;
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      opacity: 0;
+      pointer-events: none;
+      transition: all 0.3s ease;
+    }
+    .mosque-curtain-stage.unveiled .curtain-rewind-btn {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .curtain-rewind-btn:hover {
+      background: rgba(27, 94, 32, 0.95);
+      border-color: #ffd700;
+    }
+
+    @media (max-width: 480px) {
+      .unveil-medallion { width: 115px; height: 115px; }
+      .unveil-crescent { font-size: 1.25rem; }
+      .unveil-arabic { font-size: 0.85rem; }
+      .unveil-text { font-size: 0.62rem; }
+    }
+
     .mosque-image-wrapper {
       position: relative; display: block;
       border-radius: 16px; overflow: hidden;
@@ -1107,21 +1273,21 @@
 <body>
 
   <!-- ===== PRELOADER ===== -->
-    <!-- ===== ROYAL SILK PALACE CURTAIN PRELOADER ===== -->
-  <div id="preloader" aria-label="Entrance Preloader">
-    <div class="preloader-curtain preloader-curtain-left"></div>
-    <div class="preloader-curtain preloader-curtain-right"></div>
-    <div class="preloader-center-content">
-      <div class="preloader-crescent-emblem">
-        <span class="crescent-symbol">☪</span>
-      </div>
-      <p class="preloader-bismillah">بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ</p>
-      <h2 class="preloader-title">Masjid-Al-Akbari</h2>
-      <p class="preloader-subtitle">Grand Opening · Vangoor</p>
-      <div class="preloader-gold-bar">
-        <div class="preloader-gold-fill"></div>
-      </div>
+    <!-- ===== PRELOADER ===== -->
+  <div id="preloader">
+    <div class="preloader-mosque">
+      <svg viewBox="0 0 100 100" fill="none">
+        <path d="M50 10 C50 10 30 25 30 40 L30 80 L70 80 L70 40 C70 25 50 10 50 10Z" stroke="#d4af37" stroke-width="1.5" fill="rgba(212,175,55,0.1)"/>
+        <rect x="45" y="60" width="10" height="20" rx="5" fill="rgba(212,175,55,0.3)" stroke="#d4af37" stroke-width="1"/>
+        <circle cx="50" cy="5" r="3" fill="#d4af37"/>
+        <line x1="50" y1="2" x2="50" y2="0" stroke="#d4af37" stroke-width="1"/>
+        <line x1="47" y1="3" x2="45" y2="1" stroke="#d4af37" stroke-width="0.5"/>
+        <line x1="53" y1="3" x2="55" y2="1" stroke="#d4af37" stroke-width="0.5"/>
+        <line x1="30" y1="80" x2="70" y2="80" stroke="#d4af37" stroke-width="1.5"/>
+      </svg>
     </div>
+    <p class="preloader-text">بِسْمِ اللهِ</p>
+    <div class="preloader-bar"><div class="preloader-bar-fill"></div></div>
   </div>
 
   <!-- ===== PARTICLES CANVAS ===== -->
@@ -1562,20 +1728,13 @@
       || window.innerWidth < 769;
     const isLowEnd = navigator.hardwareConcurrency ? navigator.hardwareConcurrency <= 4 : isMobile;
 
-    // ===== ROYAL SILK CURTAIN PRELOADER =====
-    function openEntranceCurtains() {
-      const preloader = document.getElementById('preloader');
-      if (!preloader || preloader.classList.contains('opened')) return;
-      preloader.classList.add('opened');
-      setTimeout(() => {
-        preloader.style.display = 'none';
-      }, 1500);
-    }
+    // ===== PRELOADER =====
     window.addEventListener('load', () => {
-      setTimeout(openEntranceCurtains, isMobile ? 1800 : 2400);
+      setTimeout(() => {
+        const p = document.getElementById('preloader');
+        if (p) p.classList.add('hidden');
+      }, isMobile ? 1800 : 2500);
     });
-    // Safety fallback in case window load is delayed
-    setTimeout(openEntranceCurtains, 3500);
 
     // ===== MAGICAL GOLDEN TOUCH STARDUST TRAIL =====
     let lastStardustTime = 0;
