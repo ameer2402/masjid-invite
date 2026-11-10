@@ -642,87 +642,125 @@
       100% { opacity: 0; transform: translate(var(--dx2), -150px) scale(0.9) rotate(var(--rot2)); }
     }
 
-    /* ===== FLOATING AUDIO WIDGET ===== */
+    /* ===== FLOATING ISLAMIC AUDIO PLAYER ===== */
     .floating-audio-widget {
       position: fixed;
-      bottom: calc(24px + env(safe-area-inset-bottom));
-      right: calc(20px + env(safe-area-inset-right));
-      z-index: 999;
+      bottom: calc(20px + env(safe-area-inset-bottom));
+      right: calc(16px + env(safe-area-inset-right));
+      z-index: 1000;
+      max-width: calc(100vw - 32px);
+    }
+    .audio-player-card {
+      background: linear-gradient(145deg, rgba(13, 40, 24, 0.95), rgba(5, 14, 10, 0.98));
+      border: 1px solid rgba(212, 175, 55, 0.45);
+      border-radius: 18px;
+      padding: 9px 13px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6), 0 0 15px rgba(212, 175, 55, 0.2);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+      transition: all 0.3s ease;
+    }
+    .audio-player-header {
       display: flex;
       align-items: center;
       gap: 10px;
     }
-    .audio-circle-btn {
-      width: 50px;
-      height: 50px;
+    .audio-play-circle {
+      width: 38px;
+      height: 38px;
       border-radius: 50%;
-      background: linear-gradient(135deg, #0d2818 0%, #050e0a 100%);
-      border: 2px solid #d4af37;
-      color: #d4af37;
+      background: linear-gradient(135deg, #d4af37, #ffd700);
+      color: #0a1a0f;
+      border: none;
       display: flex;
       align-items: center;
       justify-content: center;
       cursor: pointer;
-      box-shadow: 0 4px 25px rgba(0, 0, 0, 0.5), 0 0 15px rgba(212, 175, 55, 0.25);
-      transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      box-shadow: 0 3px 12px rgba(212, 175, 55, 0.4);
+      transition: all 0.25s ease;
       -webkit-tap-highlight-color: transparent;
-      position: relative;
+      flex-shrink: 0;
     }
-    .audio-circle-btn:hover {
-      transform: scale(1.08);
-      border-color: #ffd700;
-      box-shadow: 0 6px 30px rgba(212, 175, 55, 0.4);
+    .audio-play-circle:active {
+      transform: scale(0.92);
     }
-    .audio-circle-btn:active {
-      transform: scale(0.94);
+    .audio-play-icon {
+      font-size: 0.9rem;
+      margin-left: 2px;
+      font-weight: bold;
     }
-    .audio-circle-btn.playing {
-      background: linear-gradient(135deg, #1b5e20 0%, #0d2818 100%);
-      border-color: #ffd700;
-      box-shadow: 0 0 25px rgba(212, 175, 55, 0.5);
+    .audio-track-info {
+      display: flex;
+      flex-direction: column;
+      min-width: 135px;
+      text-align: left;
+    }
+    .audio-track-title {
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: #fff;
+      line-height: 1.2;
+    }
+    .audio-track-status {
+      font-size: 0.68rem;
+      color: #d4af37;
+      margin-top: 2px;
     }
     .audio-equalizer {
       display: flex;
       align-items: center;
       gap: 2.5px;
-      height: 16px;
+      height: 14px;
     }
     .audio-bar {
       width: 2.5px;
       height: 100%;
-      background: #ffd700;
+      background: #0a1a0f;
       border-radius: 2px;
       animation: barJump 0.8s ease-in-out infinite alternate;
-    }
-    .audio-circle-btn:not(.playing) .audio-bar {
-      animation: none;
-      height: 3px;
-      background: rgba(212, 175, 55, 0.5);
     }
     .audio-bar:nth-child(2) { animation-delay: 0.2s; }
     .audio-bar:nth-child(3) { animation-delay: 0.4s; }
     @keyframes barJump {
       0% { height: 3px; }
-      100% { height: 16px; }
+      100% { height: 14px; }
     }
-    .audio-label-tag {
-      background: rgba(10, 26, 15, 0.88);
-      border: 1px solid rgba(212, 175, 55, 0.35);
-      color: rgba(255, 255, 255, 0.9);
-      font-size: 0.75rem;
-      padding: 6px 13px;
-      border-radius: 20px;
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
-      pointer-events: none;
-      transition: opacity 0.3s ease;
+    .audio-track-selector {
+      display: flex;
+      gap: 6px;
+      border-top: 1px solid rgba(212, 175, 55, 0.2);
+      padding-top: 6px;
+    }
+    .track-tab {
+      flex: 1;
+      padding: 5px 8px;
+      font-size: 0.7rem;
+      font-family: 'Poppins', sans-serif;
+      border-radius: 10px;
+      border: 1px solid rgba(212, 175, 55, 0.3);
+      background: rgba(255, 255, 255, 0.05);
+      color: rgba(255, 255, 255, 0.75);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      -webkit-tap-highlight-color: transparent;
       white-space: nowrap;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+      text-align: center;
     }
-    @media (max-width: 480px) {
-      .audio-label-tag { display: none; }
-      .floating-audio-widget { bottom: calc(18px + env(safe-area-inset-bottom)); right: 14px; }
-      .audio-circle-btn { width: 46px; height: 46px; }
+    .track-tab.active {
+      background: linear-gradient(135deg, rgba(27, 94, 32, 0.9), rgba(46, 125, 50, 0.9));
+      color: #ffd700;
+      border-color: #ffd700;
+      font-weight: 600;
+      box-shadow: 0 0 10px rgba(212, 175, 55, 0.25);
+    }
+    @media (max-width: 360px) {
+      .floating-audio-widget { right: 10px; bottom: calc(14px + env(safe-area-inset-bottom)); }
+      .audio-player-card { padding: 8px 10px; }
+      .track-tab { font-size: 0.65rem; padding: 4px 6px; }
     }
 
     /* ===== SHARE BUTTONS ===== */
@@ -1250,17 +1288,30 @@
   </div>
   <div class="copy-toast" id="copy-toast">✓ Link copied to clipboard!</div>
 
-  <!-- ===== FLOATING SPIRITUAL AUDIO WIDGET ===== -->
-  <div class="floating-audio-widget" aria-label="Spiritual Audio Control">
-    <div class="audio-label-tag" id="audio-label-tag">Spiritual Sound</div>
-    <button class="audio-circle-btn" id="audio-circle-btn" type="button" aria-label="Toggle spiritual ambient sound">
-      <div class="audio-equalizer">
-        <div class="audio-bar"></div>
-        <div class="audio-bar"></div>
-        <div class="audio-bar"></div>
+  <!-- ===== FLOATING ISLAMIC AUDIO PLAYER ===== -->
+  <div class="floating-audio-widget" id="audio-widget" aria-label="Islamic Audio Player">
+    <div class="audio-player-card">
+      <div class="audio-player-header">
+        <button class="audio-play-circle" id="audio-play-btn" type="button" aria-label="Play or Pause Audio">
+          <span class="audio-play-icon" id="audio-play-icon">▶</span>
+          <div class="audio-equalizer" id="audio-equalizer" style="display:none;">
+            <div class="audio-bar"></div>
+            <div class="audio-bar"></div>
+            <div class="audio-bar"></div>
+          </div>
+        </button>
+        <div class="audio-track-info">
+          <span class="audio-track-title" id="audio-track-title">Ayat al-Kursi</span>
+          <span class="audio-track-status" id="audio-track-status">Tap to Listen</span>
+        </div>
       </div>
-    </button>
+      <div class="audio-track-selector">
+        <button class="track-tab active" id="tab-kursi" type="button">Ayat al-Kursi</button>
+        <button class="track-tab" id="tab-nasheed" type="button">Hasbi Rabbi</button>
+      </div>
+    </div>
   </div>
+  <audio id="islamic-audio" preload="metadata"></audio>
 
   <!-- ===== FOOTER ===== -->
   <footer>
@@ -1473,11 +1524,11 @@
 
     // ===== WHATSAPP SHARE & COPY LINK =====
     const siteUrl = 'https://ameer2402.github.io/masjid-invite/';
-    const shareMessage = `🕌 *Grand Opening — Masjid-Al-Akbari* (مسجد الاکبری)\n\nبِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ\n\nYou are cordially invited to the Grand Opening of our new mosque!\n\n📅 *Date:* Sunday, 15 November 2026\n🕐 *Time:* 1:30 PM\n📍 *Venue:* Vangoor\n🍽️ *Lunch:* Served after Zuhr Salah\n\n_A Place of Worship, Guidance and Unity_\n\n🔗 *View Invitation & Live Countdown:*\n${siteUrl}\n\nMay Allah accept our efforts and make this mosque a source of Hidayah, unity and blessings for everyone. Ameen. 🤲`;
+    const shareMessage = `🕌 *Grand Opening — Masjid-Al-Akbari*\n📍 Vangoor\n\nبِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ\nYou are cordially invited on *Sunday, 15 Nov 2026* at *1:30 PM*.\nLunch served after Zuhr Salah.\n\n👉 *View Invitation:*\n${siteUrl}`;
 
     document.getElementById('share-btn').addEventListener('click', (e) => {
       e.preventDefault();
-      // Opens WhatsApp app directly with full formatted text and clickable link
+      // Short compact message (<240 chars) - link is immediately visible without truncation!
       const waUrl = 'https://api.whatsapp.com/send?text=' + encodeURIComponent(shareMessage);
       window.open(waUrl, '_blank');
     });
@@ -1513,115 +1564,79 @@
       n.style.transition = 'transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
     });
 
-    // ===== SPIRITUAL SOUND ENGINE (Web Audio API) =====
-    let audioCtx = null;
-    let isAudioPlaying = false;
-    let masterGain = null;
-    let droneOscs = [];
-    let chimeTimer = null;
+    // ===== ISLAMIC AUDIO PLAYER (Option 2: Ayat al-Kursi & Option 3: Hasbi Rabbi) =====
+    const audioEl = document.getElementById('islamic-audio');
+    const audioPlayBtn = document.getElementById('audio-play-btn');
+    const audioPlayIcon = document.getElementById('audio-play-icon');
+    const audioEqualizer = document.getElementById('audio-equalizer');
+    const audioTrackTitle = document.getElementById('audio-track-title');
+    const audioTrackStatus = document.getElementById('audio-track-status');
+    const tabKursi = document.getElementById('tab-kursi');
+    const tabNasheed = document.getElementById('tab-nasheed');
 
-    function initAudioContext() {
-      if (!audioCtx) {
-        const AudioContextClass = window.AudioContext || window.webkitAudioContext;
-        audioCtx = new AudioContextClass();
+    const tracks = {
+      kursi: {
+        title: 'Ayat al-Kursi',
+        src: 'audio-ayatulkursi.mp3'
+      },
+      nasheed: {
+        title: 'Hasbi Rabbi (Nasheed)',
+        src: 'audio-nasheed.mp3'
       }
-      if (audioCtx.state === 'suspended') {
-        audioCtx.resume();
-      }
-    }
+    };
 
-    function playBellChime(freq = 587.33) {
-      if (!audioCtx) return;
-      try {
-        const osc = audioCtx.createOscillator();
-        const gain = audioCtx.createGain();
-        osc.type = 'sine';
-        osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
-        gain.gain.setValueAtTime(0.0001, audioCtx.currentTime);
-        gain.gain.exponentialRampToValueAtTime(0.08, audioCtx.currentTime + 0.04);
-        gain.gain.exponentialRampToValueAtTime(0.00001, audioCtx.currentTime + 2.5);
-        osc.connect(gain);
-        gain.connect(audioCtx.destination);
-        osc.start();
-        osc.stop(audioCtx.currentTime + 2.5);
-      } catch (e) {}
-    }
+    let currentTrackKey = 'kursi';
+    audioEl.src = tracks.kursi.src;
 
-    function startSpiritualSound() {
-      initAudioContext();
-      masterGain = audioCtx.createGain();
-      masterGain.gain.setValueAtTime(0.0001, audioCtx.currentTime);
-      masterGain.gain.exponentialRampToValueAtTime(0.14, audioCtx.currentTime + 2.0);
-      masterGain.connect(audioCtx.destination);
-
-      const filter = audioCtx.createBiquadFilter();
-      filter.type = 'lowpass';
-      filter.frequency.setValueAtTime(380, audioCtx.currentTime);
-      filter.connect(masterGain);
-
-      // Warm F-major modal drone (F3, C4, A4, C5)
-      const freqs = [174.61, 261.63, 349.23, 440.00, 523.25];
-      droneOscs = [];
-      freqs.forEach((freq, idx) => {
-        const osc = audioCtx.createOscillator();
-        const g = audioCtx.createGain();
-        osc.type = idx === 0 ? 'sine' : 'triangle';
-        osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
-        osc.detune.setValueAtTime((idx - 2) * 3, audioCtx.currentTime);
-        g.gain.setValueAtTime(0.05 / freqs.length, audioCtx.currentTime);
-        osc.connect(g);
-        g.connect(filter);
-        osc.start();
-        droneOscs.push(osc);
+    function playTrack() {
+      audioEl.play().then(() => {
+        audioPlayIcon.style.display = 'none';
+        audioEqualizer.style.display = 'flex';
+        audioTrackStatus.textContent = 'Playing 🔊';
+      }).catch(err => {
+        audioTrackStatus.textContent = 'Tap to Listen';
       });
-
-      // Sanctuary chime
-      playBellChime(523.25);
-      chimeTimer = setInterval(() => {
-        if (!isAudioPlaying || !audioCtx) return;
-        const notes = [523.25, 659.25, 783.99, 880.00];
-        playBellChime(notes[Math.floor(Math.random() * notes.length)]);
-      }, 7000);
     }
 
-    function stopSpiritualSound() {
-      if (masterGain && audioCtx) {
-        try {
-          masterGain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 0.8);
-          setTimeout(() => {
-            droneOscs.forEach(o => {
-              try { o.stop(); o.disconnect(); } catch (err) {}
-            });
-            droneOscs = [];
-            if (chimeTimer) clearInterval(chimeTimer);
-          }, 900);
-        } catch (e) {}
-      }
+    function pauseTrack() {
+      audioEl.pause();
+      audioPlayIcon.style.display = 'block';
+      audioEqualizer.style.display = 'none';
+      audioTrackStatus.textContent = 'Paused ⏸';
     }
 
-    const audioCircleBtn = document.getElementById('audio-circle-btn');
-    const audioLabelTag = document.getElementById('audio-label-tag');
-
-    audioCircleBtn.addEventListener('click', () => {
-      if (!isAudioPlaying) {
-        startSpiritualSound();
-        isAudioPlaying = true;
-        audioCircleBtn.classList.add('playing');
-        if (audioLabelTag) audioLabelTag.textContent = 'Sound: Playing 🔊';
+    audioPlayBtn.addEventListener('click', () => {
+      if (audioEl.paused) {
+        playTrack();
       } else {
-        stopSpiritualSound();
-        isAudioPlaying = false;
-        audioCircleBtn.classList.remove('playing');
-        if (audioLabelTag) audioLabelTag.textContent = 'Sound: Paused 🔇';
+        pauseTrack();
       }
     });
 
-    // Auto-hide the "Spiritual Sound" label after 5 seconds so it stays minimal
-    setTimeout(() => {
-      if (audioLabelTag && !isAudioPlaying) {
-        audioLabelTag.style.opacity = '0';
-      }
-    }, 5000);
+    audioEl.addEventListener('ended', () => {
+      pauseTrack();
+      audioTrackStatus.textContent = 'Completed ✓';
+    });
+
+    tabKursi.addEventListener('click', () => {
+      if (currentTrackKey === 'kursi' && !audioEl.paused) return;
+      currentTrackKey = 'kursi';
+      tabKursi.classList.add('active');
+      tabNasheed.classList.remove('active');
+      audioTrackTitle.textContent = tracks.kursi.title;
+      audioEl.src = tracks.kursi.src;
+      playTrack();
+    });
+
+    tabNasheed.addEventListener('click', () => {
+      if (currentTrackKey === 'nasheed' && !audioEl.paused) return;
+      currentTrackKey = 'nasheed';
+      tabNasheed.classList.add('active');
+      tabKursi.classList.remove('active');
+      audioTrackTitle.textContent = tracks.nasheed.title;
+      audioEl.src = tracks.nasheed.src;
+      playTrack();
+    });
 
     // ===== SAY AMEEN INTERACTION =====
     const ameenBtn = document.getElementById('ameen-btn');
@@ -1630,11 +1645,6 @@
     ameenBtn.addEventListener('click', () => {
       ameenBtn.classList.add('clicked');
       ameenBtnText.textContent = '✓ Ameen Ya Rabbal \'Alameen 💚';
-
-      initAudioContext();
-      playBellChime(523.25);
-      setTimeout(() => playBellChime(659.25), 100);
-      setTimeout(() => playBellChime(783.99), 200);
 
       const rect = ameenBtn.getBoundingClientRect();
       const originX = rect.left + rect.width / 2;
