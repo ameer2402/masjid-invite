@@ -185,22 +185,158 @@
       position: fixed; inset: 0; z-index: 1; pointer-events: none;
     }
 
-    /* ===== FLOATING LANTERNS ===== */
+    /* ===== FLOATING TRADITIONAL LANTERNS ===== */
     .lantern {
-      position: fixed; z-index: 2; pointer-events: none;
-      animation: lanternSwing 4s ease-in-out infinite;
-      transform-origin: top center;
+      position: fixed;
+      top: 0;
+      z-index: 20;
+      pointer-events: none;
+      transform-origin: 50% 0;
     }
-    .lantern svg { filter: drop-shadow(0 5px 15px rgba(212,175,55,0.4)); }
-    .lantern-glow {
-      position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);
-      width: 25px; height: 35px; background: radial-gradient(ellipse, rgba(255,200,50,0.5), transparent);
-      border-radius: 50%; animation: lanternGlow 3s ease-in-out infinite;
+    .lantern svg {
+      display: block;
+      width: 46px;
+      height: 94px;
+      filter: drop-shadow(0 10px 24px rgba(255, 170, 0, 0.45));
     }
-    .lantern-1 { top: 5%; left: 3%; animation-delay: 0s; }
-    .lantern-2 { top: 3%; right: 3%; animation-delay: 1s; }
-    .lantern-3 { top: 8%; left: 15%; animation-delay: 0.5s; }
-    .lantern-4 { top: 6%; right: 15%; animation-delay: 1.5s; }
+    .lantern-1 {
+      left: 18px;
+      animation: lanternSwingLeft 5.2s ease-in-out infinite alternate;
+    }
+    .lantern-2 {
+      right: 18px;
+      animation: lanternSwingRight 5.8s ease-in-out infinite alternate;
+    }
+    .lantern-3, .lantern-4 {
+      display: none !important;
+    }
+    @keyframes lanternSwingLeft {
+      0% { transform: rotate(-5deg); }
+      100% { transform: rotate(5deg); }
+    }
+    @keyframes lanternSwingRight {
+      0% { transform: rotate(4deg); }
+      100% { transform: rotate(-6deg); }
+    }
+    .candle-flame-core {
+      animation: flameCoreFlicker 1.4s ease-in-out infinite alternate;
+      transform-origin: 23px 55px;
+    }
+    .candle-flame-aura {
+      animation: flameAuraPulse 1.8s ease-in-out infinite alternate;
+      transform-origin: 23px 54px;
+    }
+    @keyframes flameCoreFlicker {
+      0% { transform: scale(1) translateY(0); opacity: 0.95; }
+      50% { transform: scale(1.15, 0.88) translateY(-1px); opacity: 1; }
+      100% { transform: scale(0.88, 1.12) translateY(1px); opacity: 0.85; }
+    }
+    @keyframes flameAuraPulse {
+      0% { opacity: 0.55; filter: blur(3px); transform: scale(0.92); }
+      50% { opacity: 0.98; filter: blur(6px); transform: scale(1.18); }
+      100% { opacity: 0.5; filter: blur(3.5px); transform: scale(0.95); }
+    }
+
+    /* ===== CELESTIAL SKY SHOOTING STARS ===== */
+    .celestial-sky {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 100%;
+      overflow: hidden;
+      pointer-events: none;
+      z-index: 2;
+    }
+    .celestial-shooting-star {
+      position: absolute;
+      height: 2px;
+      background: linear-gradient(90deg, transparent 0%, rgba(212, 175, 55, 0.4) 30%, rgba(255, 215, 0, 0.9) 75%, #ffffff 100%);
+      border-radius: 999px;
+      filter: drop-shadow(0 0 6px rgba(255, 215, 0, 0.9));
+      opacity: 0;
+      pointer-events: none;
+      transform-origin: left center;
+    }
+    .celestial-shooting-star::after {
+      content: '';
+      position: absolute;
+      right: 0;
+      top: -1.5px;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: #ffffff;
+      box-shadow: 0 0 6px 2px rgba(255, 255, 255, 0.95), 0 0 14px 4px rgba(255, 215, 0, 0.85);
+    }
+    .star-1 {
+      top: 14%;
+      left: 8%;
+      animation: shootingStarRun 8.5s cubic-bezier(0.25, 0.1, 0.25, 1) infinite;
+      animation-delay: 1.2s;
+    }
+    .star-2 {
+      top: 30%;
+      left: 22%;
+      animation: shootingStarRun 11.5s cubic-bezier(0.25, 0.1, 0.25, 1) infinite;
+      animation-delay: 5s;
+    }
+    .star-3 {
+      top: 8%;
+      left: 36%;
+      animation: shootingStarRun 9.5s cubic-bezier(0.25, 0.1, 0.25, 1) infinite;
+      animation-delay: 8.5s;
+    }
+    @keyframes shootingStarRun {
+      0% {
+        transform: rotate(32deg) translateX(0);
+        width: 0;
+        opacity: 0;
+      }
+      5% {
+        opacity: 1;
+        width: 140px;
+      }
+      22% {
+        opacity: 1;
+        width: 140px;
+      }
+      40% {
+        transform: rotate(32deg) translateX(420px);
+        width: 0;
+        opacity: 0;
+      }
+      100% {
+        transform: rotate(32deg) translateX(420px);
+        width: 0;
+        opacity: 0;
+      }
+    }
+
+    /* ===== TOUCH STARDUST TRAIL ===== */
+    .touch-stardust {
+      position: fixed;
+      pointer-events: none;
+      z-index: 10002;
+      color: #ffd700;
+      font-size: 1.2rem;
+      line-height: 1;
+      filter: drop-shadow(0 0 6px rgba(255, 215, 0, 0.95)) drop-shadow(0 0 14px rgba(255, 223, 0, 0.6));
+      animation: stardustFade 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+      user-select: none;
+      -webkit-user-select: none;
+      transform: translate(-50%, -50%);
+    }
+    @keyframes stardustFade {
+      0% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1.3) rotate(0deg);
+      }
+      100% {
+        opacity: 0;
+        transform: translate(calc(-50% + var(--dx)), calc(-50% + var(--dy))) scale(0.2) rotate(45deg);
+      }
+    }
 
     /* ===== GEOMETRIC BORDER DECORATIONS ===== */
     .geo-border-left, .geo-border-right {
@@ -227,6 +363,7 @@
       display: flex; flex-direction: column;
       align-items: center; justify-content: center; text-align: center;
       padding: 60px 20px 80px; z-index: 5;
+      overflow: hidden;
       background:
         radial-gradient(ellipse at 50% 0%, rgba(27,94,32,0.4) 0%, transparent 60%),
         radial-gradient(ellipse at 50% 100%, rgba(212,175,55,0.15) 0%, transparent 50%),
@@ -1172,9 +1309,10 @@
       .dua-text { font-size: 0.85rem; }
       .ameen { font-size: 1.6rem; }
       .geo-border-left, .geo-border-right { width: 8px; }
-      .lantern-1 { display: block; top: 1.5%; left: 2%; transform: scale(0.6); }
-      .lantern-2 { display: block; top: 1.5%; right: 2%; transform: scale(0.6); }
-      .lantern-3, .lantern-4 { display: none; }
+      .lantern svg { width: 30px; height: 64px; }
+      .lantern-1 { left: 6px; }
+      .lantern-2 { right: 6px; }
+      .lantern-3, .lantern-4 { display: none !important; }
     }
 
     /* ---- Regular phones (375-479px) ---- */
@@ -1185,9 +1323,10 @@
       .mosque-name h2 { font-size: 1.15rem; }
       section { padding: 50px 14px; }
       .geo-border-left, .geo-border-right { width: 10px; }
-      .lantern-1 { display: block; top: 1.5%; left: 3%; transform: scale(0.7); }
-      .lantern-2 { display: block; top: 1.5%; right: 3%; transform: scale(0.7); }
-      .lantern-3, .lantern-4 { display: none; }
+      .lantern svg { width: 34px; height: 72px; }
+      .lantern-1 { left: 8px; }
+      .lantern-2 { right: 8px; }
+      .lantern-3, .lantern-4 { display: none !important; }
     }
 
     /* ---- Large phones (480-599px) ---- */
@@ -1201,9 +1340,10 @@
         grid-column: auto;
       }
       .geo-border-left, .geo-border-right { width: 15px; }
-      .lantern-1 { display: block; top: 2%; left: 4%; transform: scale(0.8); }
-      .lantern-2 { display: block; top: 2%; right: 4%; transform: scale(0.8); }
-      .lantern-3, .lantern-4 { display: none; }
+      .lantern svg { width: 38px; height: 80px; }
+      .lantern-1 { left: 12px; }
+      .lantern-2 { right: 12px; }
+      .lantern-3, .lantern-4 { display: none !important; }
     }
 
     /* ---- Tablets (600-768px) ---- */
@@ -1296,60 +1436,94 @@
   <!-- ===== SPARKLE DOTS ===== -->
   <div class="sparkle-container" id="sparkle-container"></div>
 
-  <!-- ===== FLOATING LANTERNS ===== -->
-  <div class="lantern lantern-1">
-    <svg width="45" height="72" viewBox="0 0 50 80">
-      <line x1="25" y1="0" x2="25" y2="15" stroke="#d4af37" stroke-width="1"/>
-      <path d="M15 15 Q15 10 25 10 Q35 10 35 15 L38 55 Q38 65 25 65 Q12 65 12 55Z" fill="url(#lanternGrad)" stroke="#d4af37" stroke-width="1"/>
-      <circle cx="25" cy="40" r="5.5" fill="#ffd700" class="candle-flame"/>
-      <circle cx="25" cy="40" r="2.5" fill="#ffffff" class="candle-flame"/>
-      <rect x="18" y="10" width="14" height="5" rx="2" fill="#d4af37" opacity="0.6"/>
-      <defs><linearGradient id="lanternGrad" x1="0" y1="0" x2="0" y2="1">
-        <stop offset="0%" stop-color="rgba(212,175,55,0.4)"/>
-        <stop offset="100%" stop-color="rgba(212,175,55,0.1)"/>
-      </linearGradient></defs>
+  <!-- ===== FLOATING TRADITIONAL LANTERNS ===== -->
+  <div class="lantern lantern-1" aria-hidden="true">
+    <svg width="46" height="96" viewBox="0 0 46 96" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <radialGradient id="candleGlow1" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#ffffff"/>
+          <stop offset="35%" stop-color="#ffd54f" stop-opacity="0.95"/>
+          <stop offset="70%" stop-color="#ff9800" stop-opacity="0.6"/>
+          <stop offset="100%" stop-color="#ff6f00" stop-opacity="0"/>
+        </radialGradient>
+        <linearGradient id="brassMetal1" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%" stop-color="#8a6d23"/>
+          <stop offset="35%" stop-color="#e2ba49"/>
+          <stop offset="70%" stop-color="#f5d77f"/>
+          <stop offset="100%" stop-color="#7a5f1a"/>
+        </linearGradient>
+        <linearGradient id="glassBody1" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="rgba(255, 235, 150, 0.35)"/>
+          <stop offset="50%" stop-color="rgba(255, 180, 50, 0.25)"/>
+          <stop offset="100%" stop-color="rgba(255, 140, 20, 0.4)"/>
+        </linearGradient>
+      </defs>
+      <!-- Hanging Chain from screen ceiling -->
+      <line x1="23" y1="0" x2="23" y2="22" stroke="url(#brassMetal1)" stroke-width="1.8" stroke-dasharray="2.5 1.5"/>
+      <circle cx="23" cy="22" r="3.5" stroke="url(#brassMetal1)" stroke-width="1.5" fill="none"/>
+      <path d="M23 25.5 L24 28 L22 28 Z" fill="#ffd700"/>
+      <!-- Ornate Dome Cap -->
+      <path d="M12 37 C12 28, 18 27, 23 27 C28 27, 34 28, 34 37 Z" fill="url(#brassMetal1)" stroke="#5c4510" stroke-width="0.5"/>
+      <rect x="10" y="37" width="26" height="3" rx="1.5" fill="url(#brassMetal1)"/>
+      <!-- Glass Chamber -->
+      <polygon points="12,40 34,40 30,70 16,70" fill="url(#glassBody1)" stroke="url(#brassMetal1)" stroke-width="1"/>
+      <line x1="19" y1="40" x2="21" y2="70" stroke="url(#brassMetal1)" stroke-width="0.8" opacity="0.75"/>
+      <line x1="27" y1="40" x2="25" y2="70" stroke="url(#brassMetal1)" stroke-width="0.8" opacity="0.75"/>
+      <!-- Candle & Flickering Flame -->
+      <rect x="21.5" y="61" width="3" height="8" rx="1" fill="#fffef0" opacity="0.95"/>
+      <ellipse class="candle-flame-aura" cx="23" cy="54" rx="9" ry="11" fill="url(#candleGlow1)"/>
+      <ellipse class="candle-flame-core" cx="23" cy="55" rx="3" ry="5.5" fill="#fffdf0"/>
+      <circle cx="23" cy="55.5" r="1.5" fill="#ffffff"/>
+      <!-- Base & Bottom Pendant -->
+      <polygon points="15,70 31,70 28,76 18,76" fill="url(#brassMetal1)"/>
+      <rect x="16" y="76" width="14" height="2" rx="1" fill="url(#brassMetal1)"/>
+      <path d="M23 78 L25.5 83 L20.5 83 Z" fill="url(#brassMetal1)"/>
+      <circle cx="23" cy="85" r="2.2" fill="#ffd700"/>
     </svg>
-    <div class="lantern-glow"></div>
   </div>
-  <div class="lantern lantern-2">
-    <svg width="45" height="72" viewBox="0 0 50 80">
-      <line x1="25" y1="0" x2="25" y2="15" stroke="#d4af37" stroke-width="1"/>
-      <path d="M15 15 Q15 10 25 10 Q35 10 35 15 L38 55 Q38 65 25 65 Q12 65 12 55Z" fill="url(#lanternGrad2)" stroke="#d4af37" stroke-width="1"/>
-      <circle cx="25" cy="40" r="5.5" fill="#ffd700" class="candle-flame"/>
-      <circle cx="25" cy="40" r="2.5" fill="#ffffff" class="candle-flame"/>
-      <rect x="18" y="10" width="14" height="5" rx="2" fill="#d4af37" opacity="0.6"/>
-      <defs><linearGradient id="lanternGrad2" x1="0" y1="0" x2="0" y2="1">
-        <stop offset="0%" stop-color="rgba(212,175,55,0.4)"/>
-        <stop offset="100%" stop-color="rgba(212,175,55,0.1)"/>
-      </linearGradient></defs>
+  <div class="lantern lantern-2" aria-hidden="true">
+    <svg width="46" height="96" viewBox="0 0 46 96" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <radialGradient id="candleGlow2" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#ffffff"/>
+          <stop offset="35%" stop-color="#ffd54f" stop-opacity="0.95"/>
+          <stop offset="70%" stop-color="#ff9800" stop-opacity="0.6"/>
+          <stop offset="100%" stop-color="#ff6f00" stop-opacity="0"/>
+        </radialGradient>
+        <linearGradient id="brassMetal2" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%" stop-color="#8a6d23"/>
+          <stop offset="35%" stop-color="#e2ba49"/>
+          <stop offset="70%" stop-color="#f5d77f"/>
+          <stop offset="100%" stop-color="#7a5f1a"/>
+        </linearGradient>
+        <linearGradient id="glassBody2" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="rgba(255, 235, 150, 0.35)"/>
+          <stop offset="50%" stop-color="rgba(255, 180, 50, 0.25)"/>
+          <stop offset="100%" stop-color="rgba(255, 140, 20, 0.4)"/>
+        </linearGradient>
+      </defs>
+      <!-- Hanging Chain from screen ceiling -->
+      <line x1="23" y1="0" x2="23" y2="22" stroke="url(#brassMetal2)" stroke-width="1.8" stroke-dasharray="2.5 1.5"/>
+      <circle cx="23" cy="22" r="3.5" stroke="url(#brassMetal2)" stroke-width="1.5" fill="none"/>
+      <path d="M23 25.5 L24 28 L22 28 Z" fill="#ffd700"/>
+      <!-- Ornate Dome Cap -->
+      <path d="M12 37 C12 28, 18 27, 23 27 C28 27, 34 28, 34 37 Z" fill="url(#brassMetal2)" stroke="#5c4510" stroke-width="0.5"/>
+      <rect x="10" y="37" width="26" height="3" rx="1.5" fill="url(#brassMetal2)"/>
+      <!-- Glass Chamber -->
+      <polygon points="12,40 34,40 30,70 16,70" fill="url(#glassBody2)" stroke="url(#brassMetal2)" stroke-width="1"/>
+      <line x1="19" y1="40" x2="21" y2="70" stroke="url(#brassMetal2)" stroke-width="0.8" opacity="0.75"/>
+      <line x1="27" y1="40" x2="25" y2="70" stroke="url(#brassMetal2)" stroke-width="0.8" opacity="0.75"/>
+      <!-- Candle & Flickering Flame -->
+      <rect x="21.5" y="61" width="3" height="8" rx="1" fill="#fffef0" opacity="0.95"/>
+      <ellipse class="candle-flame-aura" cx="23" cy="54" rx="9" ry="11" fill="url(#candleGlow2)"/>
+      <ellipse class="candle-flame-core" cx="23" cy="55" rx="3" ry="5.5" fill="#fffdf0"/>
+      <circle cx="23" cy="55.5" r="1.5" fill="#ffffff"/>
+      <!-- Base & Bottom Pendant -->
+      <polygon points="15,70 31,70 28,76 18,76" fill="url(#brassMetal2)"/>
+      <rect x="16" y="76" width="14" height="2" rx="1" fill="url(#brassMetal2)"/>
+      <path d="M23 78 L25.5 83 L20.5 83 Z" fill="url(#brassMetal2)"/>
+      <circle cx="23" cy="85" r="2.2" fill="#ffd700"/>
     </svg>
-    <div class="lantern-glow"></div>
-  </div>
-  <div class="lantern lantern-3">
-    <svg width="36" height="58" viewBox="0 0 50 80">
-      <line x1="25" y1="0" x2="25" y2="15" stroke="#d4af37" stroke-width="1"/>
-      <path d="M15 15 Q15 10 25 10 Q35 10 35 15 L38 55 Q38 65 25 65 Q12 65 12 55Z" fill="url(#lanternGrad3)" stroke="#d4af37" stroke-width="1"/>
-      <circle cx="25" cy="40" r="4" fill="#ffd700" class="candle-flame"/>
-      <rect x="18" y="10" width="14" height="5" rx="2" fill="#d4af37" opacity="0.6"/>
-      <defs><linearGradient id="lanternGrad3" x1="0" y1="0" x2="0" y2="1">
-        <stop offset="0%" stop-color="rgba(212,175,55,0.35)"/>
-        <stop offset="100%" stop-color="rgba(212,175,55,0.08)"/>
-      </linearGradient></defs>
-    </svg>
-    <div class="lantern-glow"></div>
-  </div>
-  <div class="lantern lantern-4">
-    <svg width="36" height="58" viewBox="0 0 50 80">
-      <line x1="25" y1="0" x2="25" y2="15" stroke="#d4af37" stroke-width="1"/>
-      <path d="M15 15 Q15 10 25 10 Q35 10 35 15 L38 55 Q38 65 25 65 Q12 65 12 55Z" fill="url(#lanternGrad4)" stroke="#d4af37" stroke-width="1"/>
-      <circle cx="25" cy="40" r="4" fill="#ffd700" class="candle-flame"/>
-      <rect x="18" y="10" width="14" height="5" rx="2" fill="#d4af37" opacity="0.6"/>
-      <defs><linearGradient id="lanternGrad4" x1="0" y1="0" x2="0" y2="1">
-        <stop offset="0%" stop-color="rgba(212,175,55,0.35)"/>
-        <stop offset="100%" stop-color="rgba(212,175,55,0.08)"/>
-      </linearGradient></defs>
-    </svg>
-    <div class="lantern-glow"></div>
   </div>
 
   <!-- ===== GEOMETRIC BORDERS ===== -->
@@ -1364,7 +1538,6 @@
       <div class="celestial-shooting-star star-2"></div>
       <div class="celestial-shooting-star star-3"></div>
     </div>
-
     <div class="geometric-pattern top-left">
       <svg viewBox="0 0 200 200" fill="none">
         <polygon points="100,10 190,100 100,190 10,100" stroke="#d4af37" stroke-width="0.5" fill="none"/>
@@ -1753,6 +1926,11 @@
       createStardust(e.clientX, e.clientY);
     }, { passive: true });
     window.addEventListener('touchmove', (e) => {
+      if (e.touches && e.touches[0]) {
+        createStardust(e.touches[0].clientX, e.touches[0].clientY);
+      }
+    }, { passive: true });
+    window.addEventListener('touchstart', (e) => {
       if (e.touches && e.touches[0]) {
         createStardust(e.touches[0].clientX, e.touches[0].clientY);
       }
