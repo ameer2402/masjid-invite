@@ -1006,7 +1006,9 @@
       .dua-text { font-size: 0.85rem; }
       .ameen { font-size: 1.6rem; }
       .geo-border-left, .geo-border-right { width: 8px; }
-      .lantern { display: none; }
+      .lantern-1 { display: block; top: 1.5%; left: 2%; transform: scale(0.6); }
+      .lantern-2 { display: block; top: 1.5%; right: 2%; transform: scale(0.6); }
+      .lantern-3, .lantern-4 { display: none; }
     }
 
     /* ---- Regular phones (375-479px) ---- */
@@ -1017,7 +1019,9 @@
       .mosque-name h2 { font-size: 1.15rem; }
       section { padding: 50px 14px; }
       .geo-border-left, .geo-border-right { width: 10px; }
-      .lantern { display: none; }
+      .lantern-1 { display: block; top: 1.5%; left: 3%; transform: scale(0.7); }
+      .lantern-2 { display: block; top: 1.5%; right: 3%; transform: scale(0.7); }
+      .lantern-3, .lantern-4 { display: none; }
     }
 
     /* ---- Large phones (480-599px) ---- */
@@ -1031,7 +1035,9 @@
         grid-column: auto;
       }
       .geo-border-left, .geo-border-right { width: 15px; }
-      .lantern { display: none; }
+      .lantern-1 { display: block; top: 2%; left: 4%; transform: scale(0.8); }
+      .lantern-2 { display: block; top: 2%; right: 4%; transform: scale(0.8); }
+      .lantern-3, .lantern-4 { display: none; }
     }
 
     /* ---- Tablets (600-768px) ---- */
@@ -1101,20 +1107,21 @@
 <body>
 
   <!-- ===== PRELOADER ===== -->
-  <div id="preloader">
-    <div class="preloader-mosque">
-      <svg viewBox="0 0 100 100" fill="none">
-        <path d="M50 10 C50 10 30 25 30 40 L30 80 L70 80 L70 40 C70 25 50 10 50 10Z" stroke="#d4af37" stroke-width="1.5" fill="rgba(212,175,55,0.1)"/>
-        <rect x="45" y="60" width="10" height="20" rx="5" fill="rgba(212,175,55,0.3)" stroke="#d4af37" stroke-width="1"/>
-        <circle cx="50" cy="5" r="3" fill="#d4af37"/>
-        <line x1="50" y1="2" x2="50" y2="0" stroke="#d4af37" stroke-width="1"/>
-        <line x1="47" y1="3" x2="45" y2="1" stroke="#d4af37" stroke-width="0.5"/>
-        <line x1="53" y1="3" x2="55" y2="1" stroke="#d4af37" stroke-width="0.5"/>
-        <line x1="30" y1="80" x2="70" y2="80" stroke="#d4af37" stroke-width="1.5"/>
-      </svg>
+    <!-- ===== ROYAL SILK PALACE CURTAIN PRELOADER ===== -->
+  <div id="preloader" aria-label="Entrance Preloader">
+    <div class="preloader-curtain preloader-curtain-left"></div>
+    <div class="preloader-curtain preloader-curtain-right"></div>
+    <div class="preloader-center-content">
+      <div class="preloader-crescent-emblem">
+        <span class="crescent-symbol">☪</span>
+      </div>
+      <p class="preloader-bismillah">بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ</p>
+      <h2 class="preloader-title">Masjid-Al-Akbari</h2>
+      <p class="preloader-subtitle">Grand Opening · Vangoor</p>
+      <div class="preloader-gold-bar">
+        <div class="preloader-gold-fill"></div>
+      </div>
     </div>
-    <p class="preloader-text">بِسْمِ اللهِ</p>
-    <div class="preloader-bar"><div class="preloader-bar-fill"></div></div>
   </div>
 
   <!-- ===== PARTICLES CANVAS ===== -->
@@ -1128,6 +1135,8 @@
     <svg width="45" height="72" viewBox="0 0 50 80">
       <line x1="25" y1="0" x2="25" y2="15" stroke="#d4af37" stroke-width="1"/>
       <path d="M15 15 Q15 10 25 10 Q35 10 35 15 L38 55 Q38 65 25 65 Q12 65 12 55Z" fill="url(#lanternGrad)" stroke="#d4af37" stroke-width="1"/>
+      <circle cx="25" cy="40" r="5.5" fill="#ffd700" class="candle-flame"/>
+      <circle cx="25" cy="40" r="2.5" fill="#ffffff" class="candle-flame"/>
       <rect x="18" y="10" width="14" height="5" rx="2" fill="#d4af37" opacity="0.6"/>
       <defs><linearGradient id="lanternGrad" x1="0" y1="0" x2="0" y2="1">
         <stop offset="0%" stop-color="rgba(212,175,55,0.4)"/>
@@ -1140,6 +1149,8 @@
     <svg width="45" height="72" viewBox="0 0 50 80">
       <line x1="25" y1="0" x2="25" y2="15" stroke="#d4af37" stroke-width="1"/>
       <path d="M15 15 Q15 10 25 10 Q35 10 35 15 L38 55 Q38 65 25 65 Q12 65 12 55Z" fill="url(#lanternGrad2)" stroke="#d4af37" stroke-width="1"/>
+      <circle cx="25" cy="40" r="5.5" fill="#ffd700" class="candle-flame"/>
+      <circle cx="25" cy="40" r="2.5" fill="#ffffff" class="candle-flame"/>
       <rect x="18" y="10" width="14" height="5" rx="2" fill="#d4af37" opacity="0.6"/>
       <defs><linearGradient id="lanternGrad2" x1="0" y1="0" x2="0" y2="1">
         <stop offset="0%" stop-color="rgba(212,175,55,0.4)"/>
@@ -1152,6 +1163,7 @@
     <svg width="36" height="58" viewBox="0 0 50 80">
       <line x1="25" y1="0" x2="25" y2="15" stroke="#d4af37" stroke-width="1"/>
       <path d="M15 15 Q15 10 25 10 Q35 10 35 15 L38 55 Q38 65 25 65 Q12 65 12 55Z" fill="url(#lanternGrad3)" stroke="#d4af37" stroke-width="1"/>
+      <circle cx="25" cy="40" r="4" fill="#ffd700" class="candle-flame"/>
       <rect x="18" y="10" width="14" height="5" rx="2" fill="#d4af37" opacity="0.6"/>
       <defs><linearGradient id="lanternGrad3" x1="0" y1="0" x2="0" y2="1">
         <stop offset="0%" stop-color="rgba(212,175,55,0.35)"/>
@@ -1164,6 +1176,7 @@
     <svg width="36" height="58" viewBox="0 0 50 80">
       <line x1="25" y1="0" x2="25" y2="15" stroke="#d4af37" stroke-width="1"/>
       <path d="M15 15 Q15 10 25 10 Q35 10 35 15 L38 55 Q38 65 25 65 Q12 65 12 55Z" fill="url(#lanternGrad4)" stroke="#d4af37" stroke-width="1"/>
+      <circle cx="25" cy="40" r="4" fill="#ffd700" class="candle-flame"/>
       <rect x="18" y="10" width="14" height="5" rx="2" fill="#d4af37" opacity="0.6"/>
       <defs><linearGradient id="lanternGrad4" x1="0" y1="0" x2="0" y2="1">
         <stop offset="0%" stop-color="rgba(212,175,55,0.35)"/>
@@ -1179,6 +1192,18 @@
 
   <!-- ===== HERO SECTION ===== -->
   <section class="hero" id="hero">
+    <!-- Celestial Sky Shooting Stars -->
+    <div class="celestial-sky">
+      <div class="celestial-shooting-star star-1"></div>
+      <div class="celestial-shooting-star star-2"></div>
+      <div class="celestial-shooting-star star-3"></div>
+    </div>
+    <!-- Rotating Sacred Islamic Rosette Watermark -->
+    <svg class="sacred-geometric-wheel" width="400" height="400" viewBox="0 0 100 100" style="top: -60px; right: -80px;">
+      <polygon points="50,5 64,14 78,5 78,21 95,21 86,35 95,50 86,64 95,78 78,78 78,95 64,86 50,95 35,86 21,95 21,78 5,78 14,64 5,50 14,35 5,21 21,21 21,5 35,14" fill="none" stroke="#d4af37" stroke-width="0.8"/>
+      <circle cx="50" cy="50" r="28" fill="none" stroke="#d4af37" stroke-width="0.6"/>
+      <circle cx="50" cy="50" r="18" fill="none" stroke="#d4af37" stroke-width="0.6"/>
+    </svg>
     <div class="geometric-pattern top-left">
       <svg viewBox="0 0 200 200" fill="none">
         <polygon points="100,10 190,100 100,190 10,100" stroke="#d4af37" stroke-width="0.5" fill="none"/>
@@ -1311,25 +1336,56 @@
       </div>
 
       <div class="reveal-scale" style="transition-delay: 0.2s;">
-        <div class="mosque-image-frame" id="mosque-image-frame" role="button" tabindex="0" aria-label="Tap to view full mosque photo">
+        <div class="mosque-image-frame" id="mosque-image-frame">
           <div class="mosque-top-ribbon">
             <span class="ribbon-icon">✦</span>
             <span>Grand Opening • Sunday, 15 Nov 2026</span>
             <span class="ribbon-icon">✦</span>
           </div>
 
-          <div class="mosque-image-wrapper">
-            <img src="mosque.jpg" alt="Masjid-Al-Akbari (مسجد الاکبری) Vangoor" id="main-mosque-img" />
-            <div class="mosque-image-overlay"></div>
-            
-            <div class="zoom-pill-hint">
-              <span>🔍 Tap to view full size</span>
+          <!-- Interactive Royal Velvet Curtain Stage -->
+          <div class="mosque-curtain-stage" id="mosque-stage">
+            <!-- Underlying Revealed Real Photo -->
+            <div class="mosque-image-wrapper" id="unveiled-photo-wrapper">
+              <img src="mosque.jpg" alt="Masjid-Al-Akbari (مسجد الاکبری) Vangoor" id="main-mosque-img" />
+              <div class="mosque-image-overlay"></div>
+              
+              <div class="zoom-pill-hint">
+                <span>🔍 Tap to view full size</span>
+              </div>
+
+              <div class="image-caption-box">
+                <span class="arabic-caption">مسجد الاکبری</span>
+                <span class="english-caption">Masjid-Al-Akbari — Vangoor</span>
+              </div>
             </div>
 
-            <div class="image-caption-box">
-              <span class="arabic-caption">مسجد الاکبری</span>
-              <span class="english-caption">Masjid-Al-Akbari — Vangoor</span>
+            <!-- Royal Islamic Curtains Covering Photo -->
+            <div class="mosque-curtain-overlay" id="mosque-curtain-overlay" role="button" tabindex="0" aria-label="Touch to unveil Masjid-Al-Akbari">
+              <div class="mosque-curtain-drape drape-left">
+                <div class="drape-tassel-fringe"></div>
+              </div>
+              <div class="mosque-curtain-drape drape-right">
+                <div class="drape-tassel-fringe"></div>
+              </div>
+
+              <!-- Center Royal Unveil Button / Medallion -->
+              <div class="curtain-unveil-trigger" id="curtain-unveil-btn">
+                <div class="unveil-pulse-ring"></div>
+                <div class="unveil-pulse-ring delay"></div>
+                <div class="unveil-medallion">
+                  <span class="unveil-crescent">☪</span>
+                  <span class="unveil-arabic">مسجد الاکبری</span>
+                  <span class="unveil-text">✨ Touch to Unveil ✨</span>
+                  <small class="unveil-sub">Tap to open curtains</small>
+                </div>
+              </div>
             </div>
+
+            <!-- Re-draw Curtains Button (Visible only after unveiling) -->
+            <button class="curtain-rewind-btn" id="curtain-rewind-btn" type="button" aria-label="Draw curtains back">
+              <span>↺ Draw Curtains</span>
+            </button>
           </div>
         </div>
 
@@ -1506,12 +1562,47 @@
       || window.innerWidth < 769;
     const isLowEnd = navigator.hardwareConcurrency ? navigator.hardwareConcurrency <= 4 : isMobile;
 
-    // ===== PRELOADER =====
-    window.addEventListener('load', () => {
+    // ===== ROYAL SILK CURTAIN PRELOADER =====
+    function openEntranceCurtains() {
+      const preloader = document.getElementById('preloader');
+      if (!preloader || preloader.classList.contains('opened')) return;
+      preloader.classList.add('opened');
       setTimeout(() => {
-        document.getElementById('preloader').classList.add('hidden');
-      }, isMobile ? 2000 : 2800); // Faster on mobile
+        preloader.style.display = 'none';
+      }, 1500);
+    }
+    window.addEventListener('load', () => {
+      setTimeout(openEntranceCurtains, isMobile ? 1800 : 2400);
     });
+    // Safety fallback in case window load is delayed
+    setTimeout(openEntranceCurtains, 3500);
+
+    // ===== MAGICAL GOLDEN TOUCH STARDUST TRAIL =====
+    let lastStardustTime = 0;
+    const stardustChars = ['✦', '✨', '⋆', '•', '✧'];
+    function createStardust(x, y) {
+      const now = performance.now();
+      if (now - lastStardustTime < 35) return;
+      lastStardustTime = now;
+
+      const star = document.createElement('div');
+      star.className = 'touch-stardust';
+      star.textContent = stardustChars[Math.floor(Math.random() * stardustChars.length)];
+      star.style.left = (x + (Math.random() - 0.5) * 16) + 'px';
+      star.style.top = (y + (Math.random() - 0.5) * 16) + 'px';
+      star.style.setProperty('--dx', ((Math.random() - 0.5) * 36) + 'px');
+      star.style.setProperty('--dy', (-20 - Math.random() * 25) + 'px');
+      document.body.appendChild(star);
+      setTimeout(() => star.remove(), 700);
+    }
+    window.addEventListener('pointermove', (e) => {
+      createStardust(e.clientX, e.clientY);
+    }, { passive: true });
+    window.addEventListener('touchmove', (e) => {
+      if (e.touches && e.touches[0]) {
+        createStardust(e.touches[0].clientX, e.touches[0].clientY);
+      }
+    }, { passive: true });
 
     // ===== PARTICLE SYSTEM (adaptive) =====
     const canvas = document.getElementById('particles-canvas');
@@ -1741,11 +1832,90 @@
       n.style.transition = 'transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
     });
 
-    // ===== MOSQUE PHOTO LIGHTBOX (TAP TO ZOOM) =====
-    const mosqueTrigger = document.getElementById('mosque-image-frame');
+    // ===== MOSQUE INTERACTIVE VELVET CURTAIN UNVEIL & LIGHTBOX =====
+    const mosqueStage = document.getElementById('mosque-stage');
+    const curtainOverlay = document.getElementById('mosque-curtain-overlay');
+    const curtainUnveilBtn = document.getElementById('curtain-unveil-btn');
+    const curtainRewindBtn = document.getElementById('curtain-rewind-btn');
+    const photoWrapper = document.getElementById('unveiled-photo-wrapper');
     const lightbox = document.getElementById('photo-lightbox');
     const lightboxClose = document.getElementById('lightbox-close');
     const lightboxBackdrop = document.getElementById('lightbox-backdrop');
+
+    function burstCurtainSparkles(cx, cy) {
+      const icons = ['✨', '✦', '🕌', '☪', '🤍', '🌙'];
+      for (let i = 0; i < 12; i++) {
+        setTimeout(() => {
+          const el = document.createElement('div');
+          el.className = 'floating-sparkle-blessing';
+          el.textContent = icons[Math.floor(Math.random() * icons.length)];
+          const angle = (i / 12) * Math.PI * 2;
+          const dist = 70 + Math.random() * 90;
+          const dx = Math.cos(angle) * dist + 'px';
+          const dy = Math.sin(angle) * dist + 'px';
+          el.style.setProperty('--dx', dx);
+          el.style.setProperty('--dx2', dx);
+          el.style.setProperty('--rot', (Math.random() * 60 - 30) + 'deg');
+          el.style.setProperty('--rot2', (Math.random() * 120 - 60) + 'deg');
+          el.style.left = cx + 'px';
+          el.style.top = cy + 'px';
+          el.style.color = '#ffd700';
+          document.body.appendChild(el);
+          setTimeout(() => el.remove(), 1600);
+        }, i * 40);
+      }
+    }
+
+    function unveilMosquePhoto(e) {
+      if (!mosqueStage || mosqueStage.classList.contains('unveiled')) return;
+      mosqueStage.classList.add('unveiled');
+
+      // Sacred reveal chime
+      try {
+        const AudioContext = window.AudioContext || window.webkitAudioContext;
+        if (AudioContext) {
+          const ctx = new AudioContext();
+          if (ctx.state === 'suspended') ctx.resume();
+          [523.25, 659.25, 783.99, 1046.50].forEach((freq, idx) => {
+            const osc = ctx.createOscillator();
+            const gain = ctx.createGain();
+            osc.type = 'sine';
+            osc.frequency.setValueAtTime(freq, ctx.currentTime);
+            const st = ctx.currentTime + (idx * 0.08);
+            gain.gain.setValueAtTime(0.0001, st);
+            gain.gain.exponentialRampToValueAtTime(0.1 / 4, st + 0.04);
+            gain.gain.exponentialRampToValueAtTime(0.00001, st + 1.8);
+            osc.connect(gain);
+            gain.connect(ctx.destination);
+            osc.start(st);
+            osc.stop(st + 1.9);
+          });
+        }
+      } catch (err) {}
+
+      // Burst sparkles around button
+      const rect = (curtainUnveilBtn || curtainOverlay).getBoundingClientRect();
+      burstCurtainSparkles(rect.left + rect.width / 2, rect.top + rect.height / 2);
+    }
+
+    function rewindMosqueCurtains(e) {
+      if (e) e.stopPropagation();
+      if (!mosqueStage) return;
+      mosqueStage.classList.remove('unveiled');
+    }
+
+    if (curtainOverlay) {
+      curtainOverlay.addEventListener('click', unveilMosquePhoto);
+      curtainOverlay.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          unveilMosquePhoto(e);
+        }
+      });
+    }
+    if (curtainRewindBtn) {
+      curtainRewindBtn.addEventListener('click', rewindMosqueCurtains);
+    }
 
     function openLightbox() {
       if (!lightbox) return;
@@ -1761,15 +1931,15 @@
       document.body.style.overflow = '';
     }
 
-    if (mosqueTrigger) {
-      mosqueTrigger.addEventListener('click', openLightbox);
-      mosqueTrigger.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter' || e.key === ' ') {
-          e.preventDefault();
+    if (photoWrapper) {
+      photoWrapper.addEventListener('click', (e) => {
+        // Open lightbox only after curtains are unveiled
+        if (mosqueStage && mosqueStage.classList.contains('unveiled')) {
           openLightbox();
         }
       });
     }
+
     if (lightboxClose) lightboxClose.addEventListener('click', closeLightbox);
     if (lightboxBackdrop) lightboxBackdrop.addEventListener('click', closeLightbox);
     document.addEventListener('keydown', (e) => {
